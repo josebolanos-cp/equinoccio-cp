@@ -1,0 +1,32 @@
+Aprender a aprender, el DMI en la industria
+Valentina Chavez · Jose Bolaños · Colgate-Palmolive
+
+CÓMO ABRIRLA
+1. Descomprime la carpeta completa (index.html y la carpeta assets deben quedar juntas).
+2. Abre index.html con Chrome o Edge (doble clic).
+3. Presiona F para pantalla completa.
+
+CONTROLES
+- Avanzar: clic, espacio, flecha derecha o Page Down (clicker)
+- Volver: flecha izquierda, Page Up o clic derecho
+- Inicio / Final: Home / End, o el botón de inicio del menú
+- Saltar a un slide: el slider del menú (abajo a la derecha)
+
+TIPOGRAFÍA
+La fuente DM Sans se carga desde Google Fonts, así que necesitas internet.
+Sin conexión, la presentación funciona igual pero con Arial.
+Si vas a presentar sin internet, instala DM Sans en el computador
+(fonts.google.com/specimen/DM+Sans); la presentación la usa automáticamente.
+
+ARCHIVOS
+index.html                  La presentación completa (estilos, animaciones y código)
+assets/cp-logo-white.png    Logo para fondos oscuros
+assets/cp-logo-color.png    Logo para fondos claros
+assets/foto-valentina.jpg   Foto de Valentina
+assets/foto-jose.jpg        Foto de Jose
+
+PENDIENTES (placeholders en la presentación)
+- Capturas de los sitios web (slide Lo que hacemos en BEX)
+- 8 imágenes 1:1 del Lab (slide Por qué Content Lab)
+- Video del reel (slide Nuestro reel)
+- Datos del caso Tu Hogar (reto, solución, aprendizajes y resultados)
