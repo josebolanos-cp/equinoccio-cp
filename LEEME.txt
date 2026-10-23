@@ -11,6 +11,10 @@ CONTROLES
 - Volver: flecha izquierda, Page Up o clic derecho
 - Inicio / Final: Home / End, o el botón de inicio del menú
 - Saltar a un slide: el slider del menú (abajo a la derecha)
+- Slides con animación larga (p. ej. Nuestro propósito): un clic durante la
+  animación la completa al instante; el siguiente clic avanza.
+- Reel (slide Nuestro reel): arranca solo al entrar al slide, con sonido.
+  Clic sobre el video = pausa/reanuda. Al salir del slide se detiene.
 
 TIPOGRAFÍA
 La fuente DM Sans se carga desde Google Fonts, así que necesitas internet.
@@ -19,14 +23,17 @@ Si vas a presentar sin internet, instala DM Sans en el computador
 (fonts.google.com/specimen/DM+Sans); la presentación la usa automáticamente.
 
 ARCHIVOS
-index.html                  La presentación completa (estilos, animaciones y código)
-assets/cp-logo-white.png    Logo para fondos oscuros
-assets/cp-logo-color.png    Logo para fondos claros
-assets/foto-valentina.jpg   Foto de Valentina
-assets/foto-jose.jpg        Foto de Jose
+index.html                     La presentación completa (estilos, animaciones y código)
+assets/cp-logo-white.png       Logo para fondos oscuros
+assets/cp-logo-color.png       Logo para fondos claros
+assets/foto-valentina.jpg      Foto de Valentina
+assets/foto-jose.jpg           Foto de Jose
+assets/reel-content-lab.mp4    Reel del Content Lab
+assets/reel-poster.jpg         Primer cuadro del reel
+assets/bex-01.mp4              Captura animada Tu Hogar (tarjeta Experiencias digitales de marca)
+assets/bex-01-poster.jpg       Primer cuadro de bex-01
+assets/bex-02.jpg, bex-03.jpg  Capturas con scroll simulado (Web admin / E-commerce)
+assets/lab-01.jpg … lab-09.jpg Piezas 1:1 del Lab para el carrusel (optimizadas a 360px)
 
-PENDIENTES (placeholders en la presentación)
-- Capturas de los sitios web (slide Lo que hacemos en BEX)
-- 8 imágenes 1:1 del Lab (slide Por qué Content Lab)
-- Video del reel (slide Nuestro reel)
-- Datos del caso Tu Hogar (reto, solución, aprendizajes y resultados)
+PENDIENTES
+- Ninguno
