@@ -310,9 +310,9 @@ svg .f{transform-box:fill-box;transform-origin:center}
 #stage h1:not(.split),#stage h2:not(.split),#stage h3,#stage .h3{text-wrap-style:balance}
 
 /* v19 · transición suave dentro de una sección */
-.slide.fadeout{opacity:0;transition:opacity .28s ease}
-.slide.fadein{animation:slideSoft .5s var(--ease) both}
-@keyframes slideSoft{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.slide.leaving{visibility:visible;z-index:2;opacity:0;transition:opacity .4s ease}
+.slide.fadein{animation:slideSoft .6s var(--ease) both}
+@keyframes slideSoft{from{transform:scale(1.015)}to{transform:none}}
 </style>
 
 </head>
@@ -1031,9 +1031,13 @@ svg .f{transform-box:fill-box;transform-origin:center}
     if(reduce){swap();busy=false;return}
     if(old.dataset.sec&&old.dataset.sec===slides[n].dataset.sec){
       // misma sección: fundido sutil
-      old.classList.add('fadeout');
-      setTimeout(()=>{old.classList.remove('fadeout');swap();const nw=slides[n];nw.classList.add('fadein');setTimeout(()=>nw.classList.remove('fadein'),520)},280);
-      setTimeout(()=>{busy=false},560);
+      // fundido cruzado: el slide nuevo queda debajo y el anterior se desvanece encima (sin pasar por el fondo del escenario)
+      const nw=slides[n];
+      old.classList.add('leaving');
+      nw.classList.add('fadein');
+      show(n,st);
+      setTimeout(()=>{old.classList.remove('active','ff','leaving');old.classList.add('noanim');apply(old,-1);void old.offsetWidth;old.classList.remove('noanim')},420);
+      setTimeout(()=>{nw.classList.remove('fadein');busy=false},620);
       return;
     }
     // cambio de sección: barrido de marca

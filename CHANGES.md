@@ -1,11 +1,11 @@
-# v19 · Transiciones
+# v20 · Fundido cruzado sin "dip"
 
-Base: equinoccio-cp-v18 (se conserva como respaldo).
+Base: equinoccio-cp-v19 (se conserva como respaldo).
 
-- El barrido de marca (azul · mint · navy) solo aparece al cambiar de sección:
-  Portada/Hook → Quiénes somos/Agenda → Propósito → BEX → Web → Content Lab → IA → Mindset consultor → Caso Tu Hogar → Cierre → Q&A.
-- Dentro de una sección, el cambio de slide es un fundido sutil (0,3 s de salida + entrada con un leve ascenso de 14 px).
-- Saltar con el slider entre secciones distintas usa el barrido; dentro de la misma, el fundido.
+- Dentro de una sección, el slide nuevo aparece debajo y el anterior se desvanece encima (0,4 s).
+  Antes el anterior se apagaba primero y se veía el fondo navy del escenario: blanco → navy → blanco.
+- El slide que entra hace un leve zoom de 1,5 % a 100 %, sin desplazamiento, para no dejar bordes visibles.
+- El barrido de marca entre secciones no cambia.
 
 ## Subir a GitHub
 index.html, CHANGES.md (los assets no cambian).
