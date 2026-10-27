@@ -1,19 +1,11 @@
-# v18 · Corrección slide 15 + ajustes de texto
+# v19 · Transiciones
 
-Base: equinoccio-cp-v17 (se conserva como respaldo; tiene el error del carrusel).
+Base: equinoccio-cp-v18 (se conserva como respaldo).
 
-## Corrección
-- 15 Un equipo que te permite crear: el carrusel se rompía en varias filas y el título se salía de la tarjeta.
-  Causa: la regla de QA tipográfico de la v17 (text-wrap: balance) anulaba el "sin salto de línea" del carrusel, los marquees y las pills.
-  Ahora se usa text-wrap-style: balance, que equilibra las líneas sin tocar esos elementos, y se reafirma nowrap en carrusel, marquee, pills y "Colgate-Palmolive".
-  Los títulos de las dos tarjetas bajan de 64 a 56 px para caber en una línea.
-
-## Texto
-- 21: "IA sin criterio" → "AI Slop".
-- 30: textos de las tarjetas resumidos:
-  - 01 "Las herramientas cambian; formular bien el problema, no."
-  - 02 "Tiempos, cliente e impacto en el negocio también son diseño."
-  - 03 "Tu Hogar llegó al #3 resolviendo primero lo que el usuario necesitaba."
+- El barrido de marca (azul · mint · navy) solo aparece al cambiar de sección:
+  Portada/Hook → Quiénes somos/Agenda → Propósito → BEX → Web → Content Lab → IA → Mindset consultor → Caso Tu Hogar → Cierre → Q&A.
+- Dentro de una sección, el cambio de slide es un fundido sutil (0,3 s de salida + entrada con un leve ascenso de 14 px).
+- Saltar con el slider entre secciones distintas usa el barrido; dentro de la misma, el fundido.
 
 ## Subir a GitHub
-index.html, LEEME.txt, README.md, CHANGES.md (los assets no cambian).
+index.html, CHANGES.md (los assets no cambian).
