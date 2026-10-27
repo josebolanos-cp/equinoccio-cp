@@ -205,7 +205,7 @@ svg .f{transform-box:fill-box;transform-origin:center}
 .tl-item::before{content:"";position:absolute;left:0;top:8px;width:32px;height:32px;border-radius:50%;background:var(--blue)}
 
 .ring94{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s var(--ease) .1s}
-.in .ring94{stroke-dashoffset:.06}
+.in .ring94{stroke-dashoffset:calc(1 - var(--pct,.94))}
 
 /* brand logo */
 .logo{position:absolute;left:80px;top:984px;height:40px;width:auto}
@@ -290,13 +290,30 @@ svg .f{transform-box:fill-box;transform-origin:center}
   *{animation-duration:0s!important;animation-iteration-count:1!important}
   .f,.split .ch,.draw{transition-duration:.2s!important;transition-delay:0s!important}
 }
+
+/* v15 ext · feedback dirección */
+.nw{white-space:nowrap}
+.split .w{white-space:nowrap}
+.ul::after{background:var(--uc,var(--white))}
+.sites{display:grid;grid-template-columns:repeat(30,20px);gap:6px}
+.sites i{display:block;width:20px;height:20px;border-radius:4px;background:var(--sky);transform:scale(0);transition:transform .5s var(--spring) calc(var(--i) * 2.5ms);animation:siteWave 5s ease-in-out infinite;animation-delay:var(--w)}
+.sites.in i{transform:none}
+@keyframes siteWave{0%,60%,100%{background:var(--sky)}30%{background:var(--blue)}}
+/* v16 · movimiento más sutil */
+@keyframes bob{0%,100%{transform:translate(0,0)}50%{transform:translate(calc(var(--fx,0px) * .35),calc(var(--fy,-26px) * .35))}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+/* v16 · scroll simulado arranca arriba cuando aparece la tarjeta */
+.f:not(.in) img.scroll{animation:none;transform:none}
+/* v17 · sin huérfanas ni viudas */
+#stage p,#stage div,#stage li{text-wrap-style:balance}
+.frames,.marquee,.track,.pill,.nw{white-space:nowrap}
+#stage h1:not(.split),#stage h2:not(.split),#stage h3,#stage .h3{text-wrap-style:balance}
 </style>
 
 </head>
 <body>
 <div id="stage">
 
-<!-- 01 · PORTADA -->
 <section class="slide s-navy" data-title="Portada">
   <div class="abs bob" style="left:0;top:0;width:1920px;height:1080px;--t:5s;--fx:14px;--fy:-14px">
   <div class="beam" style="left:1200px;top:150px;width:1600px;height:320px;transform-origin:160px 50%"><i class="f" data-s="1" data-a="growx" style="background:var(--deep)"></i></div>
@@ -311,25 +328,20 @@ svg .f{transform-box:fill-box;transform-origin:center}
     <div class="orb f" data-s="3" data-a="pop" style="left:1180px;top:620px;width:320px;height:320px"><div class="c-sand" style="font-size:60px;">Cuidado</div></div>
   </div>
   <img class="abs" style="left:80px;top:70px;height:88px;width:auto" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
-  <div class="abs kicker t-sky f" data-s="0" data-a="up" style="left:80px;top:328px">Universidad Icesi · Diseño de Medios Interactivos</div>
+  <div class="abs kicker t-sky f" data-s="0" data-a="up" style="left:80px;top:328px">Universidad Icesi · Diseño de Medios&nbsp;Interactivos</div>
   <h1 class="abs d-xl split f" data-s="0" style="left:80px;top:380px;width:1100px;--d:.1s">Aprender a|aprender</h1>
-  <p class="abs d-s t-mint f" data-s="0" data-a="up" style="left:80px;top:772px;--d:.7s">el DMI en la industria</p>
+  <p class="abs d-s t-mint f" data-s="0" data-a="up" style="left:80px;top:772px;--d:.7s">el DMI en la&nbsp;industria</p>
 
 
   <div class="abs f" data-s="4" data-a="left" style="left:80px;top:912px;display:flex;align-items:center;gap:24px">
     <span style="width:64px;height:3px;background:var(--mint);display:block"></span>
-    <span class="kicker t-white">Valentina Chavez · Jose Bolaños · Colgate-Palmolive</span>
+    <span class="kicker t-white">Valentina Chavez · Jose Bolaños · <span class="nw">Colgate-Palmolive</span></span>
   </div>
 </section>
 
-<!-- 02 · GANCHO -->
 <section class="slide s-navy" data-title="La pregunta de hoy">
-  <div class="abs kicker t-mint f" data-s="0" data-a="up" style="left:80px;top:200px">La pregunta de hoy</div>
-  <h2 class="abs d-l split f" data-s="0" style="left:80px;top:252px;width:960px;font-size:120px;--d:.1s">¿Dónde queda el|diseñador|interactivo?</h2>
-  <div class="abs f" data-s="1" data-a="up" style="left:80px;top:690px;width:880px">
-    <p class="body t-sky" style="font-size:36px">Hoy una IA puede diagramar una pantalla, redactar un copy y sugerir una paleta en segundos.</p>
-    <p class="body t-white" style="font-size:36px;margin-top:20px">Es la misma pregunta que nos hacíamos en estas sillas, y la que hoy se hace toda la industria.</p>
-  </div>
+  <div class="abs kicker t-mint f" data-s="0" data-a="up" style="left:80px;top:300px">La pregunta de&nbsp;hoy</div>
+  <h2 class="abs d-l split f" data-s="0" style="left:80px;top:352px;width:960px;font-size:120px;--d:.1s">¿Dónde queda|el diseñador|interactivo?</h2>
   <div class="abs gen" style="left:1104px;top:200px;width:736px">
     <div class="browser" style="height:600px;box-shadow:0 24px 64px rgba(0,0,0,.35)">
       <div class="bar-top"><i style="background:var(--coral)"></i><i style="background:var(--sand)"></i><i style="background:var(--green)"></i><span class="url"></span></div>
@@ -343,12 +355,11 @@ svg .f{transform-box:fill-box;transform-origin:center}
       </div>
       <div class="btn f" data-s="0" data-a="pop" style="--d:1.95s"></div>
     </div>
-    <div class="pill c-mint f gen-tag" data-s="0" data-a="up" style="--d:2.2s"><span class="dot"></span>Generado por IA en 8 s</div>
+    <div class="pill c-mint f gen-tag" data-s="0" data-a="up" style="--d:2.2s"><span class="dot"></span>Generado por IA en 8&nbsp;s</div>
   </div>
   <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 03 · SPEAKERS -->
 <section class="slide s-white" data-title="Quiénes somos">
   <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">Intro</div>
   <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px">Quiénes somos</h2>
@@ -361,9 +372,9 @@ svg .f{transform-box:fill-box;transform-origin:center}
     </div>
     <div class="spk-tx">
       <div class="spk-nm">Valentina<br>Chavez</div>
-      <div class="spk-role">Website Content Specialist LATAM</div>
-      <div class="spk-st">DMI + Maestría en Estrategia de Negocios Digitales, Icesi</div>
-      <div class="pill spk-pill">BEX · 5 años en la industria</div>
+      <div class="spk-role">Website Content Specialist&nbsp;LATAM</div>
+      <div class="spk-st">DMI + Maestría en Estrategia de Negocios Digitales,&nbsp;Icesi</div>
+      <div class="pill spk-pill">5 años en la&nbsp;industria</div>
     </div>
   </div>
   <div class="abs f spk" data-s="2" data-a="right" style="left:992px">
@@ -374,9 +385,9 @@ svg .f{transform-box:fill-box;transform-origin:center}
     </div>
     <div class="spk-tx">
       <div class="spk-nm">Jose<br>Bolaños</div>
-      <div class="spk-role">Digital Content &amp; Creative Coordinator (STA)</div>
-      <div class="spk-st">DMI, Icesi · Maestría en Gestión de la Innovación (en curso), Icesi</div>
-      <div class="pill spk-pill">Content Lab · 10 años en la industria</div>
+      <div class="spk-role">Digital Content &amp; Creative Coordinator&nbsp;(STA)</div>
+      <div class="spk-st">DMI, Icesi · Maestría en Gestión de la Innovación (en curso),&nbsp;Icesi</div>
+      <div class="pill spk-pill">10 años en la&nbsp;industria</div>
     </div>
   </div>
 
@@ -385,86 +396,287 @@ svg .f{transform-box:fill-box;transform-origin:center}
       <path class="draw" pathLength="1" d="M260 852 C 660 792, 1260 912, 1660 852" style="fill:none;stroke:var(--navy);stroke-width:4"/>
       <circle cx="260" cy="852" r="18" style="fill:var(--blue)"/><circle cx="1660" cy="852" r="18" style="fill:var(--green)"/>
     </svg>
-    <div class="abs kicker t-blue" style="left:0;width:1920px;text-align:center;top:776px">Del salón a la industria</div>
-    <div class="abs h3" style="left:60px;width:400px;text-align:center;top:888px;font-size:40px">DMI · Icesi</div>
-    <div class="abs h3" style="left:1460px;width:400px;text-align:center;top:888px;font-size:40px">Colgate-Palmolive</div>
+    <div class="abs kicker t-blue" style="left:0;width:1920px;text-align:center;top:776px">Del salón a la&nbsp;industria</div>
+    <div class="abs h3" style="left:60px;width:400px;text-align:center;top:888px;font-size:40px">DMI ·&nbsp;Icesi</div>
+    <div class="abs h3" style="left:1460px;width:400px;text-align:center;top:888px;font-size:40px"><span class="nw">Colgate-Palmolive</span></div>
   </div>
   <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 03 · PROPÓSITO -->
-<section class="slide" data-title="Nuestro propósito" style="background:var(--sky);color:var(--navy)">
-  <div class="abs bob" style="left:0;top:0;width:1920px;height:1080px;--t:5s;--fx:14px;--fy:-14px">
-  <div class="beam" style="left:1570px;top:170px;width:1600px;height:260px;transform-origin:130px 50%"><i class="f" data-s="0" data-a="growx" style="background:var(--white);--d:8.08s"></i></div>
-    <div class="orb f" data-s="0" data-a="pop" style="left:1570px;top:170px;width:260px;height:260px;--d:8.23s"><div class="c-navy" style="font-size:40px;">Personas</div></div>
-  </div>
-  <div class="abs bob" style="left:0;top:0;width:1920px;height:1080px;--t:6s;--fx:14px;--fy:-14px">
-  <div class="beam" style="left:1330px;top:470px;width:1600px;height:260px;transform-origin:130px 50%"><i class="f" data-s="0" data-a="growx" style="background:var(--blue);--d:8.99s"></i></div>
-    <div class="orb f" data-s="0" data-a="pop" style="left:1330px;top:470px;width:260px;height:260px;--d:9.14s"><div class="c-white" style="font-size:40px;">Mascotas</div></div>
-  </div>
-  <div class="abs bob" style="left:0;top:0;width:1920px;height:1080px;--t:7s;--fx:14px;--fy:-14px">
-  <div class="beam" style="left:1640px;top:640px;width:1600px;height:240px;transform-origin:120px 50%"><i class="f" data-s="0" data-a="growx" style="background:var(--navy);--d:10.01s"></i></div>
-    <div class="orb f" data-s="0" data-a="pop" style="left:1640px;top:640px;width:240px;height:240px;--d:10.16s"><div class="c-blue" style="font-size:40px;">Planeta</div></div>
-  </div>
-  <div class="abs kicker f" data-s="0" data-a="up" style="left:80px;top:180px">El marco de todo lo que hacemos</div>
-  <div class="abs f purpose" data-s="0" data-a="up" style="left:80px;top:240px;width:1000px;--d:.1s">
-    <p class="d-m" style="font-weight:700;font-size:88px;line-height:1.05"><span class="rw" style="--d:0.7s">Somos</span> <span class="rw" style="--d:1.03s">Colgate-Palmolive,</span></p>
-    <p style="font-size:48px;font-weight:500;line-height:1.35;margin-top:32px"><span class="rw" style="--d:2.31s">una</span> <span class="rw" style="--d:2.57s">compañía</span> <span class="rw" style="--d:3.0s">de</span> <span class="rw" style="--d:3.23s"><span class="ul">cuidado</span>,</span> <span class="rw" style="--d:3.84s"><span class="ul">innovación</span></span> <span class="rw" style="--d:4.33s">y</span> <span class="rw" style="--d:4.53s"><span class="ul">crecimiento</span>,</span> <span class="rw" style="--d:5.26s">reimaginando</span> <span class="rw" style="--d:5.82s">un</span> <span class="rw" style="--d:6.05s">futuro</span> <span class="rw" style="--d:6.41s">más</span> <span class="rw" style="--d:6.68s">saludable</span> <span class="rw" style="--d:7.14s">para</span> <span class="rw" style="--d:7.44s">todas</span> <span class="rw" style="--d:7.77s">las</span> <span class="rw" style="--d:8.03s">personas,</span> <span class="rw" style="--d:8.67s">sus</span> <span class="rw" style="--d:8.94s">mascotas</span> <span class="rw" style="--d:9.36s">y</span> <span class="rw" style="--d:9.56s">nuestro</span> <span class="rw" style="--d:9.96s">planeta.</span></p>
-  </div>
-  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
-</section>
-
-<!-- 03 · AGENDA -->
 <section class="slide s-surface" data-title="Agenda">
   <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">Agenda</div>
   <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px">De qué vamos a hablar hoy</h2>
-
-  <div class="panel c-blue f" data-s="1" data-a="up" style="left:80px">
-    <div class="n">01</div>
-    <svg viewBox="0 0 220 220" aria-hidden="true">
-      <g class="ico-s" style="stroke-width:4;opacity:.7"><path d="M40 60 L110 40 L180 70 L150 150 L70 170 L40 60 M110 40 L110 110 L180 70 M110 110 L70 170 M110 110 L150 150 M40 60 L110 110"/></g>
-      <circle class="nd" cx="40" cy="60" r="14"/><circle class="nd" cx="110" cy="40" r="14" style="animation-delay:.3s"/><circle class="nd" cx="180" cy="70" r="14" style="animation-delay:.6s"/>
-      <circle class="nd" cx="150" cy="150" r="14" style="animation-delay:.9s"/><circle class="nd" cx="70" cy="170" r="14" style="animation-delay:1.2s"/><circle class="nd" cx="110" cy="110" r="22" style="animation-delay:.15s;fill:var(--mint)"/>
-    </svg>
-    <div><div class="ag-w">Innovación</div><div class="ag-c">con criterio</div><div class="small" style="margin-top:16px">La IA como herramienta, no como reemplazo</div></div>
+  <svg class="full" viewBox="0 0 1920 1080" aria-hidden="true"><path class="draw f" data-s="2" data-a="hl" pathLength="1" d="M286 540 L377 540" style="fill:none;stroke:var(--navy);stroke-width:4;stroke-linecap:round;stroke-dasharray:1"/><path class="draw f" data-s="3" data-a="hl" pathLength="1" d="M537 540 L629 540" style="fill:none;stroke:var(--navy);stroke-width:4;stroke-linecap:round;stroke-dasharray:1"/><path class="draw f" data-s="4" data-a="hl" pathLength="1" d="M789 540 L880 540" style="fill:none;stroke:var(--navy);stroke-width:4;stroke-linecap:round;stroke-dasharray:1"/><path class="draw f" data-s="5" data-a="hl" pathLength="1" d="M1040 540 L1131 540" style="fill:none;stroke:var(--navy);stroke-width:4;stroke-linecap:round;stroke-dasharray:1"/><path class="draw f" data-s="6" data-a="hl" pathLength="1" d="M1291 540 L1383 540" style="fill:none;stroke:var(--navy);stroke-width:4;stroke-linecap:round;stroke-dasharray:1"/><path class="draw f" data-s="7" data-a="hl" pathLength="1" d="M1543 540 L1634 540" style="fill:none;stroke:var(--navy);stroke-width:4;stroke-linecap:round;stroke-dasharray:1"/>
+    <path class="draw f" data-s="4" data-a="hl" pathLength="1" d="M96 404 L96 380 L1070 380 L1070 404" style="fill:none;stroke:var(--blue);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;--d:.3s"/>
+  </svg>
+  <div class="abs kicker t-blue f" data-s="4" data-a="up" style="left:96px;top:320px;width:974px;text-align:center;font-size:26px;--d:.5s">Nuestra&nbsp;historia</div>
+  <div class="abs f" data-s="1" data-a="pop" style="left:81px;top:460px;width:250px;text-align:center">
+    <div class="c-navy bob" style="width:160px;height:160px;margin:0 auto;border-radius:50%;display:grid;place-items:center;font-size:48px;font-weight:700;--t:5s;--fy:-8px">01</div>
+    <div class="t-navy" style="margin-top:24px;font-size:24px;font-weight:700;line-height:1.15"><span class="nw">Colgate-Palmolive</span></div>
   </div>
-
-  <div class="panel c-navy f" data-s="2" data-a="up" style="left:683px">
-    <div class="n">02</div>
-    <svg viewBox="0 0 220 220" aria-hidden="true">
-      <g class="rot" style="--dur:8s;transform-origin:88px 120px"><circle cx="88" cy="120" r="50" style="fill:none;stroke:var(--mint);stroke-width:22;stroke-dasharray:12 10.44"/><circle cx="88" cy="120" r="20" class="ico-s" style="stroke:var(--mint)"/></g>
-      <g class="rotr" style="--dur:5.3s;transform-origin:160px 62px"><circle cx="160" cy="62" r="30" style="fill:none;stroke:var(--white);stroke-width:16;stroke-dasharray:8 7.7"/><circle cx="160" cy="62" r="10" style="fill:none;stroke:var(--white);stroke-width:5"/></g>
-    </svg>
-    <div><div class="ag-w">Crecimiento</div><div class="ag-c t-mint">con método</div><div class="small t-sky" style="margin-top:16px">Mindset consultor y project management</div></div>
+  <div class="abs f" data-s="2" data-a="pop" style="left:332px;top:460px;width:250px;text-align:center">
+    <div class="c-blue bob" style="width:160px;height:160px;margin:0 auto;border-radius:50%;display:grid;place-items:center;font-size:48px;font-weight:700;--t:6s;--fy:-8px">02</div>
+    <div class="t-navy" style="margin-top:24px;font-size:24px;font-weight:700;line-height:1.15">BEX</div>
   </div>
-
-  <div class="panel c-mint f" data-s="3" data-a="up" style="left:1286px">
-    <div class="n">03</div>
-    <svg viewBox="0 0 220 220" aria-hidden="true">
-      <g class="pulse" style="transform-box:fill-box;transform-origin:center;--t:1.6s"><path d="M110 184 C 44 138, 26 92, 52 64 C 76 40, 104 52, 110 76 C 116 52, 144 40, 168 64 C 194 92, 176 138, 110 184 Z" class="ico-s"/></g>
-      <path d="M14 118 H68 L84 92 L100 146 L116 100 L128 118 H206" style="fill:none;stroke:var(--blue);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:14 10;animation:flow 1.4s linear infinite"/>
-    </svg>
-    <div><div class="ag-w">Cuidado</div><div class="ag-c" style="color:var(--blue)">con impacto real</div><div class="small" style="margin-top:16px">BEX, Content Lab y el caso Tu Hogar</div></div>
+  <div class="abs f" data-s="3" data-a="pop" style="left:584px;top:460px;width:250px;text-align:center">
+    <div class="c-sky bob" style="width:160px;height:160px;margin:0 auto;border-radius:50%;display:grid;place-items:center;font-size:48px;font-weight:700;--t:7s;--fy:-8px">03</div>
+    <div class="t-navy" style="margin-top:24px;font-size:24px;font-weight:700;line-height:1.15">Web</div>
+  </div>
+  <div class="abs f" data-s="4" data-a="pop" style="left:835px;top:460px;width:250px;text-align:center">
+    <div class="c-sand bob" style="width:160px;height:160px;margin:0 auto;border-radius:50%;display:grid;place-items:center;font-size:48px;font-weight:700;--t:5s;--fy:-8px">04</div>
+    <div class="t-navy" style="margin-top:24px;font-size:24px;font-weight:700;line-height:1.15">Content&nbsp;Lab</div>
+  </div>
+  <div class="abs f" data-s="5" data-a="pop" style="left:1086px;top:460px;width:250px;text-align:center">
+    <div class="c-mint bob" style="width:160px;height:160px;margin:0 auto;border-radius:50%;display:grid;place-items:center;font-size:48px;font-weight:700;--t:6s;--fy:-8px">05</div>
+    <div class="t-navy" style="margin-top:24px;font-size:24px;font-weight:700;line-height:1.15">¿Dónde queda<br>el&nbsp;DMI?</div>
+  </div>
+  <div class="abs f" data-s="6" data-a="pop" style="left:1338px;top:460px;width:250px;text-align:center">
+    <div class="c-green bob" style="width:160px;height:160px;margin:0 auto;border-radius:50%;display:grid;place-items:center;font-size:48px;font-weight:700;--t:7s;--fy:-8px">06</div>
+    <div class="t-navy" style="margin-top:24px;font-size:24px;font-weight:700;line-height:1.15">Mindset<br>consultor</div>
+  </div>
+  <div class="abs f" data-s="7" data-a="pop" style="left:1589px;top:460px;width:250px;text-align:center">
+    <div class="c-white bob" style="width:160px;height:160px;margin:0 auto;border-radius:50%;display:grid;place-items:center;font-size:48px;font-weight:700;border:3px solid var(--navy);box-sizing:border-box;--t:5s;--fy:-8px">07</div>
+    <div class="t-navy" style="margin-top:24px;font-size:24px;font-weight:700;line-height:1.15">Caso<br>Tu&nbsp;Hogar</div>
   </div>
   <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 04 · DIVIDER 01 IA -->
-<section class="slide s-blue" data-title="01 · La IA no nos reemplaza">
+<section class="slide" data-title="Nuestro propósito" style="background:var(--sky);color:var(--navy)">
+  <div class="abs bob" style="left:0;top:0;width:1920px;height:1080px;--t:5s;--fx:14px;--fy:-14px">
+  <div class="beam" style="left:1570px;top:170px;width:1600px;height:260px;transform-origin:130px 50%"><i class="f" data-s="0" data-a="growx" style="background:var(--white);--d:.2s"></i></div>
+    <div class="orb f" data-s="1" data-a="pop" style="left:1570px;top:170px;width:260px;height:260px;--d:0s"><div class="c-navy" style="font-size:40px;">Personas</div></div>
+  </div>
+  <div class="abs bob" style="left:0;top:0;width:1920px;height:1080px;--t:6s;--fx:14px;--fy:-14px">
+  <div class="beam" style="left:1330px;top:470px;width:1600px;height:260px;transform-origin:130px 50%"><i class="f" data-s="0" data-a="growx" style="background:var(--blue);--d:.4s"></i></div>
+    <div class="orb f" data-s="1" data-a="pop" style="left:1330px;top:470px;width:260px;height:260px;--d:.15s"><div class="c-white" style="font-size:40px;">Mascotas</div></div>
+  </div>
+  <div class="abs bob" style="left:0;top:0;width:1920px;height:1080px;--t:7s;--fx:14px;--fy:-14px">
+  <div class="beam" style="left:1640px;top:640px;width:1600px;height:240px;transform-origin:120px 50%"><i class="f" data-s="0" data-a="growx" style="background:var(--navy);--d:.6s"></i></div>
+    <div class="orb f" data-s="1" data-a="pop" style="left:1640px;top:640px;width:240px;height:240px;--d:.3s"><div class="c-blue" style="font-size:40px;">Planeta</div></div>
+  </div>
+  <div class="abs kicker f" data-s="0" data-a="up" style="left:80px;top:112px">01 · El marco de todo lo que&nbsp;hacemos</div>
+  <div class="abs f purpose" data-s="0" data-a="up" style="left:80px;top:168px;width:1120px;--d:.2s">
+    <p class="d-m" style="font-weight:700;font-size:80px;line-height:1.05">Somos&nbsp;<span class="nw">Colgate-Palmolive</span>,</p>
+    <p style="font-size:44px;font-weight:500;line-height:1.35;margin-top:24px;width:980px">una compañía de <span class="ul" style="--d:1.2s">cuidado</span>, <span class="ul" style="--d:1.5s">innovación</span> y <span class="ul" style="--d:1.8s">crecimiento</span>, reimaginando un futuro más saludable para todas las personas, sus mascotas y nuestro&nbsp;planeta.</p>
+  </div>
+  <div class="abs kicker f" data-s="2" data-a="up" style="left:80px;top:642px">Nuestras&nbsp;categorías</div>
+  <div class="abs f c-navy" data-s="2" data-a="up" style="left:80px;top:690px;width:222px;height:260px;border-radius:16px;padding:20px;box-sizing:border-box;--d:0.00s">
+    <div style="font-size:24px;font-weight:700;line-height:1.15;min-height:56px">Cuidado<br>oral</div>
+    <div style="display:grid;place-items:center;height:140px"><img class="f bob" data-s="2" data-a="pop" src="assets/logo-colgate.png" alt="colgate" style="width:120px;height:120px;--d:0.25s;--t:5s;--fy:-6px"></div>
+  </div>
+  <div class="abs f c-navy" data-s="2" data-a="up" style="left:326px;top:690px;width:222px;height:260px;border-radius:16px;padding:20px;box-sizing:border-box;--d:0.12s">
+    <div style="font-size:24px;font-weight:700;line-height:1.15;min-height:56px">Cuidado<br>personal</div>
+    <div style="display:grid;grid-template-columns:64px 64px;gap:10px;justify-content:center;height:140px;align-content:center"><img class="f bob" data-s="2" data-a="pop" src="assets/logo-palmolive.png" alt="palmolive" style="width:64px;height:64px;--d:0.50s;--t:4s;--fy:-5px"><img class="f bob" data-s="2" data-a="pop" src="assets/logo-protex.png" alt="protex" style="width:64px;height:64px;--d:0.58s;--t:5s;--fy:-5px"><img class="f bob" data-s="2" data-a="pop" src="assets/logo-speed-stick.png" alt="speed-stick" style="width:64px;height:64px;--d:0.66s;--t:6s;--fy:-5px"><img class="f bob" data-s="2" data-a="pop" src="assets/logo-lady-speed-stick.png" alt="lady-speed-stick" style="width:64px;height:64px;--d:0.74s;--t:4s;--fy:-5px"></div>
+  </div>
+  <div class="abs f c-navy" data-s="2" data-a="up" style="left:572px;top:690px;width:222px;height:260px;border-radius:16px;padding:20px;box-sizing:border-box;--d:0.24s">
+    <div style="font-size:24px;font-weight:700;line-height:1.15;min-height:56px">Cuidado<br>del&nbsp;hogar</div>
+    <div style="display:grid;grid-template-columns:64px 64px;gap:10px;justify-content:center;height:140px;align-content:center"><img class="f bob" data-s="2" data-a="pop" src="assets/logo-ajax.png" alt="ajax" style="width:64px;height:64px;--d:0.75s;--t:4s;--fy:-5px"><img class="f bob" data-s="2" data-a="pop" src="assets/logo-suavitel.png" alt="suavitel" style="width:64px;height:64px;--d:0.83s;--t:5s;--fy:-5px"><img class="f bob" data-s="2" data-a="pop" src="assets/logo-fabuloso.png" alt="fabuloso" style="width:64px;height:64px;--d:0.91s;--t:6s;--fy:-5px"><img class="f bob" data-s="2" data-a="pop" src="assets/logo-axion.png" alt="axion" style="width:64px;height:64px;--d:0.99s;--t:4s;--fy:-5px"></div>
+  </div>
+  <div class="abs f c-navy" data-s="2" data-a="up" style="left:818px;top:690px;width:222px;height:260px;border-radius:16px;padding:20px;box-sizing:border-box;--d:0.36s">
+    <div style="font-size:24px;font-weight:700;line-height:1.15;min-height:56px">Nutrición<br>de&nbsp;mascotas</div>
+    <div style="display:grid;place-items:center;height:140px"><img class="f bob" data-s="2" data-a="pop" src="assets/logo-hills.png" alt="hills" style="width:120px;height:120px;--d:1.00s;--t:5s;--fy:-6px"></div>
+  </div>
+  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-navy" data-title="02 · BEX">
+  <canvas class="globe" width="1920" height="1080" style="position:absolute;inset:0"></canvas>
+  <div class="abs idx t-mint f" data-s="0" data-a="up" style="left:80px;top:260px">02</div>
+  <h2 class="abs d-xxl split f" data-s="0" style="left:80px;top:340px;--d:.1s">BEX</h2>
+  <p class="abs d-s split f" data-s="0" style="left:80px;top:560px;width:900px;--d:.5s">Brand Experience&nbsp;Center</p>
+  <div class="abs f" data-s="0" data-a="up" style="left:80px;top:800px;--d:1s"><div class="pill c-mint"><span class="dot"></span>Presenta · Valentina&nbsp;Chavez</div></div>
+  <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-white" data-title="BEX · Nuestra historia">
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">02 ·&nbsp;BEX</div>
+  <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px;width:780px">Todo empezó|con BEX</h2>
+  <svg class="full" viewBox="0 0 1920 1080" aria-hidden="true"><path class="draw f" data-s="3" data-a="hl" pathLength="1" d="M94 420 L94 772" style="fill:none;stroke:var(--surface2);stroke-width:4"/></svg>
+  <div class="abs f" data-s="1" data-a="left" style="left:80px;top:392px;width:720px;padding-left:56px">
+    <span style="position:absolute;left:0;top:14px;width:28px;height:28px;border-radius:50%;background:var(--blue)"></span>
+    <div class="t-blue" style="font-size:44px;font-weight:700;line-height:1.1">2012</div>
+    <div class="h3 t-navy" style="font-size:36px;margin-top:4px">Nace BEX en&nbsp;Cali</div>
+    <div class="small t-ink" style="font-size:24px;font-weight:400;margin-top:4px">Brand Experience&nbsp;Center</div>
+  </div>
+  <div class="abs f" data-s="2" data-a="left" style="left:80px;top:568px;width:720px;padding-left:56px">
+    <span style="position:absolute;left:0;top:14px;width:28px;height:28px;border-radius:50%;background:var(--blue)"></span>
+    <div class="t-blue" style="font-size:44px;font-weight:700;line-height:1.1">7 años&nbsp;después</div>
+    <div class="h3 t-navy" style="font-size:36px;margin-top:4px">Dentro de BEX nace el Content&nbsp;Lab</div>
+    <div class="small t-ink" style="font-size:24px;font-weight:400;margin-top:4px">La misma historia, un nuevo&nbsp;equipo</div>
+  </div>
+  <div class="abs f" data-s="3" data-a="left" style="left:80px;top:744px;width:720px;padding-left:56px">
+    <span style="position:absolute;left:0;top:14px;width:28px;height:28px;border-radius:50%;background:var(--blue)"></span>
+    <div class="t-blue" style="font-size:44px;font-weight:700;line-height:1.1">Hoy</div>
+    <div class="h3 t-navy" style="font-size:36px;margin-top:4px">50+&nbsp;profesionales</div>
+    <div class="small t-ink" style="font-size:24px;font-weight:400;margin-top:4px">Las personas detrás de cada&nbsp;sitio</div>
+  </div>
+  <div class="abs f" data-s="0" data-a="blur" style="left:880px;top:200px;width:960px;height:640px;border-radius:16px;overflow:hidden;--d:.3s">
+    <img src="assets/foto-bex-equipo.jpg" alt="Equipo BEX" style="width:100%;height:100%;object-fit:cover;display:block">
+  </div>
+  <div class="abs f" data-s="0" data-a="up" style="left:912px;top:872px;--d:.8s"><div class="pill c-navy" style="font-size:24px;padding:12px 24px"><span class="dot" style="background:var(--mint)"></span>El equipo&nbsp;BEX</div></div>
+  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-white" data-title="94% desde Cali">
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">02 ·&nbsp;BEX</div>
+  <div class="abs col" style="left:80px;top:112px;width:840px">
+    <h2 class="d-l split f" data-s="0" style="font-size:112px">Desde Cali,|para el mundo</h2>
+    <p class="body t-ink f" data-s="2" data-a="up" style="width:680px;font-size:44px;line-height:1.25;font-weight:500">de los sitios web de <span class="nw">Colgate-Palmolive</span> en el mundo se construyen y gestionan desde&nbsp;Cali.</p>
+    <div class="f" data-s="2" data-a="left" style="--d:.3s"><div class="pill c-navy" style="font-size:26px">Orgullo local, impacto&nbsp;global</div></div>
+  </div>
+  <div class="f" data-s="1" data-a="fade">
+    <svg class="full" viewBox="0 0 1920 1080" aria-hidden="true">
+      <circle cx="1360" cy="560" r="360" class="ring" style="stroke:var(--surface2);stroke-width:36"/>
+      <circle class="ring94" cx="1360" cy="560" r="360" pathLength="1" transform="rotate(-90 1360 560)" style="fill:none;stroke:var(--blue);stroke-width:36;stroke-linecap:round"/>
+    </svg>
+    <div class="abs num t-navy" style="left:1000px;top:440px;width:720px;text-align:center;font-size:260px" data-count="94" data-suffix="%">0%</div>
+  </div>
+  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-white" data-title="Escala BEX">
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">02 · BEX · Desde 2012 · 50+&nbsp;profesionales</div>
+  <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px;width:900px">La escala|de BEX</h2>
+  <div class="abs f" data-s="1" data-a="left" style="left:80px;top:420px"><div class="num t-blue" style="font-size:120px" data-count="600" data-suffix="+">0+</div><div class="small t-ink">Sitios web&nbsp;actualizados</div></div>
+  <div class="abs f" data-s="2" data-a="left" style="left:80px;top:610px"><div class="num t-navy" style="font-size:120px" data-count="70" data-suffix="+">0+</div><div class="small t-ink">Mercados&nbsp;atendidos</div></div>
+  <div class="abs f" data-s="3" data-a="left" style="left:80px;top:800px"><div class="num" style="font-size:120px;color:var(--deep)" data-count="40" data-prefix="~">~0</div><div class="small t-ink">Marcas</div></div>
+
+  <div class="abs f sites" data-s="1" data-a="hl" style="left:1040px;top:330px"><i style="--i:0;--w:0ms"></i><i style="--i:1;--w:70ms"></i><i style="--i:2;--w:140ms"></i><i style="--i:3;--w:210ms"></i><i style="--i:4;--w:280ms"></i><i style="--i:5;--w:350ms"></i><i style="--i:6;--w:420ms"></i><i style="--i:7;--w:490ms"></i><i style="--i:8;--w:560ms"></i><i style="--i:9;--w:630ms"></i><i style="--i:10;--w:700ms"></i><i style="--i:11;--w:770ms"></i><i style="--i:12;--w:840ms"></i><i style="--i:13;--w:910ms"></i><i style="--i:14;--w:980ms"></i><i style="--i:15;--w:1050ms"></i><i style="--i:16;--w:1120ms"></i><i style="--i:17;--w:1190ms"></i><i style="--i:18;--w:1260ms"></i><i style="--i:19;--w:1330ms"></i><i style="--i:20;--w:1400ms"></i><i style="--i:21;--w:1470ms"></i><i style="--i:22;--w:1540ms"></i><i style="--i:23;--w:1610ms"></i><i style="--i:24;--w:1680ms"></i><i style="--i:25;--w:1750ms"></i><i style="--i:26;--w:1820ms"></i><i style="--i:27;--w:1890ms"></i><i style="--i:28;--w:1960ms"></i><i style="--i:29;--w:2030ms"></i><i style="--i:30;--w:70ms"></i><i style="--i:31;--w:140ms"></i><i style="--i:32;--w:210ms"></i><i style="--i:33;--w:280ms"></i><i style="--i:34;--w:350ms"></i><i style="--i:35;--w:420ms"></i><i style="--i:36;--w:490ms"></i><i style="--i:37;--w:560ms"></i><i style="--i:38;--w:630ms"></i><i style="--i:39;--w:700ms"></i><i style="--i:40;--w:770ms"></i><i style="--i:41;--w:840ms"></i><i style="--i:42;--w:910ms"></i><i style="--i:43;--w:980ms"></i><i style="--i:44;--w:1050ms"></i><i style="--i:45;--w:1120ms"></i><i style="--i:46;--w:1190ms"></i><i style="--i:47;--w:1260ms"></i><i style="--i:48;--w:1330ms"></i><i style="--i:49;--w:1400ms"></i><i style="--i:50;--w:1470ms"></i><i style="--i:51;--w:1540ms"></i><i style="--i:52;--w:1610ms"></i><i style="--i:53;--w:1680ms"></i><i style="--i:54;--w:1750ms"></i><i style="--i:55;--w:1820ms"></i><i style="--i:56;--w:1890ms"></i><i style="--i:57;--w:1960ms"></i><i style="--i:58;--w:2030ms"></i><i style="--i:59;--w:2100ms"></i><i style="--i:60;--w:140ms"></i><i style="--i:61;--w:210ms"></i><i style="--i:62;--w:280ms"></i><i style="--i:63;--w:350ms"></i><i style="--i:64;--w:420ms"></i><i style="--i:65;--w:490ms"></i><i style="--i:66;--w:560ms"></i><i style="--i:67;--w:630ms"></i><i style="--i:68;--w:700ms"></i><i style="--i:69;--w:770ms"></i><i style="--i:70;--w:840ms"></i><i style="--i:71;--w:910ms"></i><i style="--i:72;--w:980ms"></i><i style="--i:73;--w:1050ms"></i><i style="--i:74;--w:1120ms"></i><i style="--i:75;--w:1190ms"></i><i style="--i:76;--w:1260ms"></i><i style="--i:77;--w:1330ms"></i><i style="--i:78;--w:1400ms"></i><i style="--i:79;--w:1470ms"></i><i style="--i:80;--w:1540ms"></i><i style="--i:81;--w:1610ms"></i><i style="--i:82;--w:1680ms"></i><i style="--i:83;--w:1750ms"></i><i style="--i:84;--w:1820ms"></i><i style="--i:85;--w:1890ms"></i><i style="--i:86;--w:1960ms"></i><i style="--i:87;--w:2030ms"></i><i style="--i:88;--w:2100ms"></i><i style="--i:89;--w:2170ms"></i><i style="--i:90;--w:210ms"></i><i style="--i:91;--w:280ms"></i><i style="--i:92;--w:350ms"></i><i style="--i:93;--w:420ms"></i><i style="--i:94;--w:490ms"></i><i style="--i:95;--w:560ms"></i><i style="--i:96;--w:630ms"></i><i style="--i:97;--w:700ms"></i><i style="--i:98;--w:770ms"></i><i style="--i:99;--w:840ms"></i><i style="--i:100;--w:910ms"></i><i style="--i:101;--w:980ms"></i><i style="--i:102;--w:1050ms"></i><i style="--i:103;--w:1120ms"></i><i style="--i:104;--w:1190ms"></i><i style="--i:105;--w:1260ms"></i><i style="--i:106;--w:1330ms"></i><i style="--i:107;--w:1400ms"></i><i style="--i:108;--w:1470ms"></i><i style="--i:109;--w:1540ms"></i><i style="--i:110;--w:1610ms"></i><i style="--i:111;--w:1680ms"></i><i style="--i:112;--w:1750ms"></i><i style="--i:113;--w:1820ms"></i><i style="--i:114;--w:1890ms"></i><i style="--i:115;--w:1960ms"></i><i style="--i:116;--w:2030ms"></i><i style="--i:117;--w:2100ms"></i><i style="--i:118;--w:2170ms"></i><i style="--i:119;--w:2240ms"></i><i style="--i:120;--w:280ms"></i><i style="--i:121;--w:350ms"></i><i style="--i:122;--w:420ms"></i><i style="--i:123;--w:490ms"></i><i style="--i:124;--w:560ms"></i><i style="--i:125;--w:630ms"></i><i style="--i:126;--w:700ms"></i><i style="--i:127;--w:770ms"></i><i style="--i:128;--w:840ms"></i><i style="--i:129;--w:910ms"></i><i style="--i:130;--w:980ms"></i><i style="--i:131;--w:1050ms"></i><i style="--i:132;--w:1120ms"></i><i style="--i:133;--w:1190ms"></i><i style="--i:134;--w:1260ms"></i><i style="--i:135;--w:1330ms"></i><i style="--i:136;--w:1400ms"></i><i style="--i:137;--w:1470ms"></i><i style="--i:138;--w:1540ms"></i><i style="--i:139;--w:1610ms"></i><i style="--i:140;--w:1680ms"></i><i style="--i:141;--w:1750ms"></i><i style="--i:142;--w:1820ms"></i><i style="--i:143;--w:1890ms"></i><i style="--i:144;--w:1960ms"></i><i style="--i:145;--w:2030ms"></i><i style="--i:146;--w:2100ms"></i><i style="--i:147;--w:2170ms"></i><i style="--i:148;--w:2240ms"></i><i style="--i:149;--w:2310ms"></i><i style="--i:150;--w:350ms"></i><i style="--i:151;--w:420ms"></i><i style="--i:152;--w:490ms"></i><i style="--i:153;--w:560ms"></i><i style="--i:154;--w:630ms"></i><i style="--i:155;--w:700ms"></i><i style="--i:156;--w:770ms"></i><i style="--i:157;--w:840ms"></i><i style="--i:158;--w:910ms"></i><i style="--i:159;--w:980ms"></i><i style="--i:160;--w:1050ms"></i><i style="--i:161;--w:1120ms"></i><i style="--i:162;--w:1190ms"></i><i style="--i:163;--w:1260ms"></i><i style="--i:164;--w:1330ms"></i><i style="--i:165;--w:1400ms"></i><i style="--i:166;--w:1470ms"></i><i style="--i:167;--w:1540ms"></i><i style="--i:168;--w:1610ms"></i><i style="--i:169;--w:1680ms"></i><i style="--i:170;--w:1750ms"></i><i style="--i:171;--w:1820ms"></i><i style="--i:172;--w:1890ms"></i><i style="--i:173;--w:1960ms"></i><i style="--i:174;--w:2030ms"></i><i style="--i:175;--w:2100ms"></i><i style="--i:176;--w:2170ms"></i><i style="--i:177;--w:2240ms"></i><i style="--i:178;--w:2310ms"></i><i style="--i:179;--w:2380ms"></i><i style="--i:180;--w:420ms"></i><i style="--i:181;--w:490ms"></i><i style="--i:182;--w:560ms"></i><i style="--i:183;--w:630ms"></i><i style="--i:184;--w:700ms"></i><i style="--i:185;--w:770ms"></i><i style="--i:186;--w:840ms"></i><i style="--i:187;--w:910ms"></i><i style="--i:188;--w:980ms"></i><i style="--i:189;--w:1050ms"></i><i style="--i:190;--w:1120ms"></i><i style="--i:191;--w:1190ms"></i><i style="--i:192;--w:1260ms"></i><i style="--i:193;--w:1330ms"></i><i style="--i:194;--w:1400ms"></i><i style="--i:195;--w:1470ms"></i><i style="--i:196;--w:1540ms"></i><i style="--i:197;--w:1610ms"></i><i style="--i:198;--w:1680ms"></i><i style="--i:199;--w:1750ms"></i><i style="--i:200;--w:1820ms"></i><i style="--i:201;--w:1890ms"></i><i style="--i:202;--w:1960ms"></i><i style="--i:203;--w:2030ms"></i><i style="--i:204;--w:2100ms"></i><i style="--i:205;--w:2170ms"></i><i style="--i:206;--w:2240ms"></i><i style="--i:207;--w:2310ms"></i><i style="--i:208;--w:2380ms"></i><i style="--i:209;--w:2450ms"></i><i style="--i:210;--w:490ms"></i><i style="--i:211;--w:560ms"></i><i style="--i:212;--w:630ms"></i><i style="--i:213;--w:700ms"></i><i style="--i:214;--w:770ms"></i><i style="--i:215;--w:840ms"></i><i style="--i:216;--w:910ms"></i><i style="--i:217;--w:980ms"></i><i style="--i:218;--w:1050ms"></i><i style="--i:219;--w:1120ms"></i><i style="--i:220;--w:1190ms"></i><i style="--i:221;--w:1260ms"></i><i style="--i:222;--w:1330ms"></i><i style="--i:223;--w:1400ms"></i><i style="--i:224;--w:1470ms"></i><i style="--i:225;--w:1540ms"></i><i style="--i:226;--w:1610ms"></i><i style="--i:227;--w:1680ms"></i><i style="--i:228;--w:1750ms"></i><i style="--i:229;--w:1820ms"></i><i style="--i:230;--w:1890ms"></i><i style="--i:231;--w:1960ms"></i><i style="--i:232;--w:2030ms"></i><i style="--i:233;--w:2100ms"></i><i style="--i:234;--w:2170ms"></i><i style="--i:235;--w:2240ms"></i><i style="--i:236;--w:2310ms"></i><i style="--i:237;--w:2380ms"></i><i style="--i:238;--w:2450ms"></i><i style="--i:239;--w:2520ms"></i><i style="--i:240;--w:560ms"></i><i style="--i:241;--w:630ms"></i><i style="--i:242;--w:700ms"></i><i style="--i:243;--w:770ms"></i><i style="--i:244;--w:840ms"></i><i style="--i:245;--w:910ms"></i><i style="--i:246;--w:980ms"></i><i style="--i:247;--w:1050ms"></i><i style="--i:248;--w:1120ms"></i><i style="--i:249;--w:1190ms"></i><i style="--i:250;--w:1260ms"></i><i style="--i:251;--w:1330ms"></i><i style="--i:252;--w:1400ms"></i><i style="--i:253;--w:1470ms"></i><i style="--i:254;--w:1540ms"></i><i style="--i:255;--w:1610ms"></i><i style="--i:256;--w:1680ms"></i><i style="--i:257;--w:1750ms"></i><i style="--i:258;--w:1820ms"></i><i style="--i:259;--w:1890ms"></i><i style="--i:260;--w:1960ms"></i><i style="--i:261;--w:2030ms"></i><i style="--i:262;--w:2100ms"></i><i style="--i:263;--w:2170ms"></i><i style="--i:264;--w:2240ms"></i><i style="--i:265;--w:2310ms"></i><i style="--i:266;--w:2380ms"></i><i style="--i:267;--w:2450ms"></i><i style="--i:268;--w:2520ms"></i><i style="--i:269;--w:2590ms"></i><i style="--i:270;--w:630ms"></i><i style="--i:271;--w:700ms"></i><i style="--i:272;--w:770ms"></i><i style="--i:273;--w:840ms"></i><i style="--i:274;--w:910ms"></i><i style="--i:275;--w:980ms"></i><i style="--i:276;--w:1050ms"></i><i style="--i:277;--w:1120ms"></i><i style="--i:278;--w:1190ms"></i><i style="--i:279;--w:1260ms"></i><i style="--i:280;--w:1330ms"></i><i style="--i:281;--w:1400ms"></i><i style="--i:282;--w:1470ms"></i><i style="--i:283;--w:1540ms"></i><i style="--i:284;--w:1610ms"></i><i style="--i:285;--w:1680ms"></i><i style="--i:286;--w:1750ms"></i><i style="--i:287;--w:1820ms"></i><i style="--i:288;--w:1890ms"></i><i style="--i:289;--w:1960ms"></i><i style="--i:290;--w:2030ms"></i><i style="--i:291;--w:2100ms"></i><i style="--i:292;--w:2170ms"></i><i style="--i:293;--w:2240ms"></i><i style="--i:294;--w:2310ms"></i><i style="--i:295;--w:2380ms"></i><i style="--i:296;--w:2450ms"></i><i style="--i:297;--w:2520ms"></i><i style="--i:298;--w:2590ms"></i><i style="--i:299;--w:2660ms"></i><i style="--i:300;--w:700ms"></i><i style="--i:301;--w:770ms"></i><i style="--i:302;--w:840ms"></i><i style="--i:303;--w:910ms"></i><i style="--i:304;--w:980ms"></i><i style="--i:305;--w:1050ms"></i><i style="--i:306;--w:1120ms"></i><i style="--i:307;--w:1190ms"></i><i style="--i:308;--w:1260ms"></i><i style="--i:309;--w:1330ms"></i><i style="--i:310;--w:1400ms"></i><i style="--i:311;--w:1470ms"></i><i style="--i:312;--w:1540ms"></i><i style="--i:313;--w:1610ms"></i><i style="--i:314;--w:1680ms"></i><i style="--i:315;--w:1750ms"></i><i style="--i:316;--w:1820ms"></i><i style="--i:317;--w:1890ms"></i><i style="--i:318;--w:1960ms"></i><i style="--i:319;--w:2030ms"></i><i style="--i:320;--w:2100ms"></i><i style="--i:321;--w:2170ms"></i><i style="--i:322;--w:2240ms"></i><i style="--i:323;--w:2310ms"></i><i style="--i:324;--w:2380ms"></i><i style="--i:325;--w:2450ms"></i><i style="--i:326;--w:2520ms"></i><i style="--i:327;--w:2590ms"></i><i style="--i:328;--w:2660ms"></i><i style="--i:329;--w:2730ms"></i><i style="--i:330;--w:770ms"></i><i style="--i:331;--w:840ms"></i><i style="--i:332;--w:910ms"></i><i style="--i:333;--w:980ms"></i><i style="--i:334;--w:1050ms"></i><i style="--i:335;--w:1120ms"></i><i style="--i:336;--w:1190ms"></i><i style="--i:337;--w:1260ms"></i><i style="--i:338;--w:1330ms"></i><i style="--i:339;--w:1400ms"></i><i style="--i:340;--w:1470ms"></i><i style="--i:341;--w:1540ms"></i><i style="--i:342;--w:1610ms"></i><i style="--i:343;--w:1680ms"></i><i style="--i:344;--w:1750ms"></i><i style="--i:345;--w:1820ms"></i><i style="--i:346;--w:1890ms"></i><i style="--i:347;--w:1960ms"></i><i style="--i:348;--w:2030ms"></i><i style="--i:349;--w:2100ms"></i><i style="--i:350;--w:2170ms"></i><i style="--i:351;--w:2240ms"></i><i style="--i:352;--w:2310ms"></i><i style="--i:353;--w:2380ms"></i><i style="--i:354;--w:2450ms"></i><i style="--i:355;--w:2520ms"></i><i style="--i:356;--w:2590ms"></i><i style="--i:357;--w:2660ms"></i><i style="--i:358;--w:2730ms"></i><i style="--i:359;--w:2800ms"></i><i style="--i:360;--w:840ms"></i><i style="--i:361;--w:910ms"></i><i style="--i:362;--w:980ms"></i><i style="--i:363;--w:1050ms"></i><i style="--i:364;--w:1120ms"></i><i style="--i:365;--w:1190ms"></i><i style="--i:366;--w:1260ms"></i><i style="--i:367;--w:1330ms"></i><i style="--i:368;--w:1400ms"></i><i style="--i:369;--w:1470ms"></i><i style="--i:370;--w:1540ms"></i><i style="--i:371;--w:1610ms"></i><i style="--i:372;--w:1680ms"></i><i style="--i:373;--w:1750ms"></i><i style="--i:374;--w:1820ms"></i><i style="--i:375;--w:1890ms"></i><i style="--i:376;--w:1960ms"></i><i style="--i:377;--w:2030ms"></i><i style="--i:378;--w:2100ms"></i><i style="--i:379;--w:2170ms"></i><i style="--i:380;--w:2240ms"></i><i style="--i:381;--w:2310ms"></i><i style="--i:382;--w:2380ms"></i><i style="--i:383;--w:2450ms"></i><i style="--i:384;--w:2520ms"></i><i style="--i:385;--w:2590ms"></i><i style="--i:386;--w:2660ms"></i><i style="--i:387;--w:2730ms"></i><i style="--i:388;--w:2800ms"></i><i style="--i:389;--w:2870ms"></i><i style="--i:390;--w:910ms"></i><i style="--i:391;--w:980ms"></i><i style="--i:392;--w:1050ms"></i><i style="--i:393;--w:1120ms"></i><i style="--i:394;--w:1190ms"></i><i style="--i:395;--w:1260ms"></i><i style="--i:396;--w:1330ms"></i><i style="--i:397;--w:1400ms"></i><i style="--i:398;--w:1470ms"></i><i style="--i:399;--w:1540ms"></i><i style="--i:400;--w:1610ms"></i><i style="--i:401;--w:1680ms"></i><i style="--i:402;--w:1750ms"></i><i style="--i:403;--w:1820ms"></i><i style="--i:404;--w:1890ms"></i><i style="--i:405;--w:1960ms"></i><i style="--i:406;--w:2030ms"></i><i style="--i:407;--w:2100ms"></i><i style="--i:408;--w:2170ms"></i><i style="--i:409;--w:2240ms"></i><i style="--i:410;--w:2310ms"></i><i style="--i:411;--w:2380ms"></i><i style="--i:412;--w:2450ms"></i><i style="--i:413;--w:2520ms"></i><i style="--i:414;--w:2590ms"></i><i style="--i:415;--w:2660ms"></i><i style="--i:416;--w:2730ms"></i><i style="--i:417;--w:2800ms"></i><i style="--i:418;--w:2870ms"></i><i style="--i:419;--w:2940ms"></i><i style="--i:420;--w:980ms"></i><i style="--i:421;--w:1050ms"></i><i style="--i:422;--w:1120ms"></i><i style="--i:423;--w:1190ms"></i><i style="--i:424;--w:1260ms"></i><i style="--i:425;--w:1330ms"></i><i style="--i:426;--w:1400ms"></i><i style="--i:427;--w:1470ms"></i><i style="--i:428;--w:1540ms"></i><i style="--i:429;--w:1610ms"></i><i style="--i:430;--w:1680ms"></i><i style="--i:431;--w:1750ms"></i><i style="--i:432;--w:1820ms"></i><i style="--i:433;--w:1890ms"></i><i style="--i:434;--w:1960ms"></i><i style="--i:435;--w:2030ms"></i><i style="--i:436;--w:2100ms"></i><i style="--i:437;--w:2170ms"></i><i style="--i:438;--w:2240ms"></i><i style="--i:439;--w:2310ms"></i><i style="--i:440;--w:2380ms"></i><i style="--i:441;--w:2450ms"></i><i style="--i:442;--w:2520ms"></i><i style="--i:443;--w:2590ms"></i><i style="--i:444;--w:2660ms"></i><i style="--i:445;--w:2730ms"></i><i style="--i:446;--w:2800ms"></i><i style="--i:447;--w:2870ms"></i><i style="--i:448;--w:2940ms"></i><i style="--i:449;--w:3010ms"></i><i style="--i:450;--w:1050ms"></i><i style="--i:451;--w:1120ms"></i><i style="--i:452;--w:1190ms"></i><i style="--i:453;--w:1260ms"></i><i style="--i:454;--w:1330ms"></i><i style="--i:455;--w:1400ms"></i><i style="--i:456;--w:1470ms"></i><i style="--i:457;--w:1540ms"></i><i style="--i:458;--w:1610ms"></i><i style="--i:459;--w:1680ms"></i><i style="--i:460;--w:1750ms"></i><i style="--i:461;--w:1820ms"></i><i style="--i:462;--w:1890ms"></i><i style="--i:463;--w:1960ms"></i><i style="--i:464;--w:2030ms"></i><i style="--i:465;--w:2100ms"></i><i style="--i:466;--w:2170ms"></i><i style="--i:467;--w:2240ms"></i><i style="--i:468;--w:2310ms"></i><i style="--i:469;--w:2380ms"></i><i style="--i:470;--w:2450ms"></i><i style="--i:471;--w:2520ms"></i><i style="--i:472;--w:2590ms"></i><i style="--i:473;--w:2660ms"></i><i style="--i:474;--w:2730ms"></i><i style="--i:475;--w:2800ms"></i><i style="--i:476;--w:2870ms"></i><i style="--i:477;--w:2940ms"></i><i style="--i:478;--w:3010ms"></i><i style="--i:479;--w:3080ms"></i><i style="--i:480;--w:1120ms"></i><i style="--i:481;--w:1190ms"></i><i style="--i:482;--w:1260ms"></i><i style="--i:483;--w:1330ms"></i><i style="--i:484;--w:1400ms"></i><i style="--i:485;--w:1470ms"></i><i style="--i:486;--w:1540ms"></i><i style="--i:487;--w:1610ms"></i><i style="--i:488;--w:1680ms"></i><i style="--i:489;--w:1750ms"></i><i style="--i:490;--w:1820ms"></i><i style="--i:491;--w:1890ms"></i><i style="--i:492;--w:1960ms"></i><i style="--i:493;--w:2030ms"></i><i style="--i:494;--w:2100ms"></i><i style="--i:495;--w:2170ms"></i><i style="--i:496;--w:2240ms"></i><i style="--i:497;--w:2310ms"></i><i style="--i:498;--w:2380ms"></i><i style="--i:499;--w:2450ms"></i><i style="--i:500;--w:2520ms"></i><i style="--i:501;--w:2590ms"></i><i style="--i:502;--w:2660ms"></i><i style="--i:503;--w:2730ms"></i><i style="--i:504;--w:2800ms"></i><i style="--i:505;--w:2870ms"></i><i style="--i:506;--w:2940ms"></i><i style="--i:507;--w:3010ms"></i><i style="--i:508;--w:3080ms"></i><i style="--i:509;--w:3150ms"></i><i style="--i:510;--w:1190ms"></i><i style="--i:511;--w:1260ms"></i><i style="--i:512;--w:1330ms"></i><i style="--i:513;--w:1400ms"></i><i style="--i:514;--w:1470ms"></i><i style="--i:515;--w:1540ms"></i><i style="--i:516;--w:1610ms"></i><i style="--i:517;--w:1680ms"></i><i style="--i:518;--w:1750ms"></i><i style="--i:519;--w:1820ms"></i><i style="--i:520;--w:1890ms"></i><i style="--i:521;--w:1960ms"></i><i style="--i:522;--w:2030ms"></i><i style="--i:523;--w:2100ms"></i><i style="--i:524;--w:2170ms"></i><i style="--i:525;--w:2240ms"></i><i style="--i:526;--w:2310ms"></i><i style="--i:527;--w:2380ms"></i><i style="--i:528;--w:2450ms"></i><i style="--i:529;--w:2520ms"></i><i style="--i:530;--w:2590ms"></i><i style="--i:531;--w:2660ms"></i><i style="--i:532;--w:2730ms"></i><i style="--i:533;--w:2800ms"></i><i style="--i:534;--w:2870ms"></i><i style="--i:535;--w:2940ms"></i><i style="--i:536;--w:3010ms"></i><i style="--i:537;--w:3080ms"></i><i style="--i:538;--w:3150ms"></i><i style="--i:539;--w:3220ms"></i><i style="--i:540;--w:1260ms"></i><i style="--i:541;--w:1330ms"></i><i style="--i:542;--w:1400ms"></i><i style="--i:543;--w:1470ms"></i><i style="--i:544;--w:1540ms"></i><i style="--i:545;--w:1610ms"></i><i style="--i:546;--w:1680ms"></i><i style="--i:547;--w:1750ms"></i><i style="--i:548;--w:1820ms"></i><i style="--i:549;--w:1890ms"></i><i style="--i:550;--w:1960ms"></i><i style="--i:551;--w:2030ms"></i><i style="--i:552;--w:2100ms"></i><i style="--i:553;--w:2170ms"></i><i style="--i:554;--w:2240ms"></i><i style="--i:555;--w:2310ms"></i><i style="--i:556;--w:2380ms"></i><i style="--i:557;--w:2450ms"></i><i style="--i:558;--w:2520ms"></i><i style="--i:559;--w:2590ms"></i><i style="--i:560;--w:2660ms"></i><i style="--i:561;--w:2730ms"></i><i style="--i:562;--w:2800ms"></i><i style="--i:563;--w:2870ms"></i><i style="--i:564;--w:2940ms"></i><i style="--i:565;--w:3010ms"></i><i style="--i:566;--w:3080ms"></i><i style="--i:567;--w:3150ms"></i><i style="--i:568;--w:3220ms"></i><i style="--i:569;--w:3290ms"></i><i style="--i:570;--w:1330ms"></i><i style="--i:571;--w:1400ms"></i><i style="--i:572;--w:1470ms"></i><i style="--i:573;--w:1540ms"></i><i style="--i:574;--w:1610ms"></i><i style="--i:575;--w:1680ms"></i><i style="--i:576;--w:1750ms"></i><i style="--i:577;--w:1820ms"></i><i style="--i:578;--w:1890ms"></i><i style="--i:579;--w:1960ms"></i><i style="--i:580;--w:2030ms"></i><i style="--i:581;--w:2100ms"></i><i style="--i:582;--w:2170ms"></i><i style="--i:583;--w:2240ms"></i><i style="--i:584;--w:2310ms"></i><i style="--i:585;--w:2380ms"></i><i style="--i:586;--w:2450ms"></i><i style="--i:587;--w:2520ms"></i><i style="--i:588;--w:2590ms"></i><i style="--i:589;--w:2660ms"></i><i style="--i:590;--w:2730ms"></i><i style="--i:591;--w:2800ms"></i><i style="--i:592;--w:2870ms"></i><i style="--i:593;--w:2940ms"></i><i style="--i:594;--w:3010ms"></i><i style="--i:595;--w:3080ms"></i><i style="--i:596;--w:3150ms"></i><i style="--i:597;--w:3220ms"></i><i style="--i:598;--w:3290ms"></i><i style="--i:599;--w:3360ms"></i></div>
+  <div class="abs small t-ink f" data-s="1" data-a="up" style="left:1040px;top:876px;font-size:24px;--d:1.6s">Cada cuadro, un sitio&nbsp;web</div>
+  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-surface" data-title="Web">
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">03 ·&nbsp;Web</div>
+  <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px">Lo que hacemos en la web</h2>
+  <div class="abs f" data-s="1" data-a="card" style="left:80px;top:256px;width:555px">
+    <div class="browser" style="height:440px"><div class="bar-top"><i style="background:var(--coral)"></i><i style="background:var(--sand)"></i><i style="background:var(--green)"></i><span class="url"></span></div>
+      <div class="shot media"><img class="scroll" src="assets/bex-03.jpg" alt="Sitio de marca Colgate-Palmolive" style="--dist:-1028px;--dur:13s"></div></div>
+    <div class="h3" style="margin-top:24px;font-weight:700;font-size:36px;min-height:83px">E-commerce e&nbsp;integraciones</div><div class="small t-ink" style="font-size:24px">Buy now · Ratings &amp; reviews · Google Tag&nbsp;Manager</div>
+  </div>
+  <div class="abs f" data-s="2" data-a="card" style="left:683px;top:256px;width:555px">
+    <div class="browser" style="height:440px"><div class="bar-top"><i style="background:var(--coral)"></i><i style="background:var(--sand)"></i><i style="background:var(--green)"></i><span class="url"></span></div>
+      <div class="shot media"><img class="scroll" src="assets/bex-02.jpg" alt="Sitio de marca Colgate-Palmolive" style="--dist:-1489px;--dur:15s;animation-delay:2s"></div></div>
+    <div class="h3" style="margin-top:24px;font-weight:700;font-size:36px;min-height:83px">Web admin y&nbsp;campañas</div><div class="small t-ink" style="font-size:24px">Campañas IMC · PLP/PDP · Landing pages · Actualizaciones&nbsp;masivas</div>
+  </div>
+  <div class="abs f" data-s="3" data-a="card" style="left:1286px;top:256px;width:555px">
+    <div class="browser" style="height:440px"><div class="bar-top"><i style="background:var(--coral)"></i><i style="background:var(--sand)"></i><i style="background:var(--green)"></i><span class="url"></span></div>
+      <div class="shot media"><video src="assets/bex-01.mp4" poster="assets/bex-01-poster.jpg" muted loop autoplay playsinline preload="auto"></video></div></div>
+    <div class="h3" style="margin-top:24px;font-weight:700;font-size:36px;min-height:83px">Experiencias digitales de&nbsp;marca</div><div class="small t-ink" style="font-size:24px">Formularios · Quizzes con Jebbit · Canales globales de&nbsp;YouTube</div>
+  </div>
+  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-sand" data-title="04 · Content Lab">
+  <svg class="full" viewBox="0 0 1920 1080" aria-hidden="true"><g class="th-scroll" id="threads"></g></svg>
+  <div class="abs idx f" data-s="0" data-a="up" style="left:80px;top:320px">04</div>
+  <h2 class="abs d-xl split f" data-s="0" style="left:80px;top:400px;width:1200px;--d:.15s">Content|Lab</h2>
+  <div class="abs f" data-s="0" data-a="up" style="left:80px;top:800px;--d:1s"><div class="pill c-navy"><span class="dot" style="background:var(--coral)"></span>Presenta · Jose&nbsp;Bolaños</div></div>
+  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-white" data-title="Content Lab · Las personas">
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">04 · Content&nbsp;Lab</div>
+  <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px">Las personas detrás del Lab</h2>
+  <div class="abs f" data-s="0" data-a="blur" style="left:80px;top:300px;width:1000px;height:563px;border-radius:16px;overflow:hidden;--d:.3s">
+    <img src="assets/foto-lab-equipo.jpg" alt="Equipo Content Lab" style="width:100%;height:100%;object-fit:cover;display:block">
+  </div>
+  <div class="abs f" data-s="0" data-a="up" style="left:112px;top:892px;--d:.8s"><div class="pill c-navy" style="font-size:24px;padding:12px 24px"><span class="dot" style="background:var(--coral)"></span>El equipo Content&nbsp;Lab</div></div>
+  <p class="abs f t-navy" data-s="1" data-a="right" style="left:1176px;top:320px;width:664px;font-size:44px;font-weight:600;line-height:1.25">Somos un equipo creativo e innovador que ofrece soluciones audiovisuales para todo CP a nivel&nbsp;global.</p>
+  <div class="abs f" data-s="2" data-a="right" style="left:1176px;top:700px;width:664px;display:flex;align-items:baseline;gap:24px">
+    <div class="num t-blue" style="font-size:144px"><span data-count="7">0</span></div>
+    <div class="h3 t-navy" style="font-size:36px">años creando&nbsp;juntos</div>
+  </div>
+  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-navy" data-title="Equipo Content Lab">
+  <div class="abs kicker t-mint f" data-s="0" data-a="up" style="left:80px;top:72px">04 · Content&nbsp;Lab</div>
+  <div class="abs col" style="left:80px;top:112px;width:760px">
+    <h2 class="d-m split f" data-s="0" style="font-size:80px">Socio estratégico|in-house</h2>
+    <p class="body t-sky f" data-s="0" data-a="up" style="width:600px;--d:.5s">Un equipo creativo de diseñadores para todo el portafolio de&nbsp;CP.</p>
+  </div>
+  <div class="abs" style="left:810px;top:110px;width:900px;height:900px">
+    <svg viewBox="0 0 900 900" style="position:absolute;inset:0;overflow:visible" aria-hidden="true"><circle cx="450" cy="450" r="360" class="ring" style="stroke:var(--deep);stroke-width:3;stroke-dasharray:4 14"/></svg>
+    <div class="rot" style="position:absolute;inset:0;--dur:90s">
+      <svg viewBox="0 0 900 900" style="position:absolute;inset:0;overflow:visible" aria-hidden="true">
+        <path class="draw f" data-s="1" data-a="hl" pathLength="1" d="M450 450 L450 90" style="stroke:var(--sky);stroke-width:3"/>
+        <path class="draw f" data-s="2" data-a="hl" pathLength="1" d="M450 450 L792 339" style="stroke:var(--sky);stroke-width:3"/>
+        <path class="draw f" data-s="3" data-a="hl" pathLength="1" d="M450 450 L662 741" style="stroke:var(--sky);stroke-width:3"/>
+        <path class="draw f" data-s="4" data-a="hl" pathLength="1" d="M450 450 L238 741" style="stroke:var(--sky);stroke-width:3"/>
+        <path class="draw f" data-s="5" data-a="hl" pathLength="1" d="M450 450 L108 339" style="stroke:var(--sky);stroke-width:3"/>
+      </svg>
+      <div class="abs" style="left:355px;top:-5px;width:190px;height:190px"><div class="f" data-s="1" data-a="pop" style="width:100%;height:100%"><div class="rotr c-mint" style="--dur:90s;width:100%;height:100%;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:30px;font-weight:700;line-height:1.05">Triage</div></div></div>
+      <div class="abs" style="left:697px;top:244px;width:190px;height:190px"><div class="f" data-s="2" data-a="pop" style="width:100%;height:100%"><div class="rotr c-sand" style="--dur:90s;width:100%;height:100%;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:30px;font-weight:700;line-height:1.05">Flujos de<br>trabajo</div></div></div>
+      <div class="abs" style="left:567px;top:646px;width:190px;height:190px"><div class="f" data-s="3" data-a="pop" style="width:100%;height:100%"><div class="rotr c-green" style="--dur:90s;width:100%;height:100%;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:30px;font-weight:700;line-height:1.05">Prioridades</div></div></div>
+      <div class="abs" style="left:143px;top:646px;width:190px;height:190px"><div class="f" data-s="4" data-a="pop" style="width:100%;height:100%"><div class="rotr c-sky" style="--dur:90s;width:100%;height:100%;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:30px;font-weight:700;line-height:1.05">ETAs<br>a&nbsp;tiempo</div></div></div>
+      <div class="abs" style="left:13px;top:244px;width:190px;height:190px"><div class="f" data-s="5" data-a="pop" style="width:100%;height:100%"><div class="rotr c-white" style="--dur:90s;width:100%;height:100%;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:30px;font-weight:700;line-height:1.05">Client<br>centric</div></div></div>
+    </div>
+    <div class="abs" style="left:300px;top:300px;width:300px;height:300px">
+      <span class="ripple" style="--rc:var(--blue)"></span><span class="ripple" style="--rc:var(--blue)"></span><span class="ripple" style="--rc:var(--blue)"></span>
+      <div class="c-blue pulse" style="width:100%;height:100%;border-radius:50%;display:grid;place-items:center;font-size:64px;font-weight:700;text-align:center;line-height:1">Content<br>Lab</div>
+    </div>
+  </div>
+  <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-navy" data-title="Reel Content Lab">
+  <div class="abs kicker t-mint f" data-s="0" data-a="up" style="left:80px;top:72px">04 · Content&nbsp;Lab</div>
+  <h2 class="abs d-s split f" data-s="0" style="left:80px;top:112px">Nuestro reel</h2>
+  <div class="reel has-video f" data-s="0" data-a="blur" style="--d:.3s">
+    <video id="reel" data-slide-play src="assets/reel-content-lab.mp4" poster="assets/reel-poster.jpg" playsinline preload="auto"></video>
+  </div>
+  <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-white" data-title="Un equipo que te permite crear">
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">04 · Content&nbsp;Lab</div>
+  <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px;font-size:96px">Un equipo que te permite crear</h2>
+  <div class="abs tile c-navy f" data-s="1" data-a="pop" style="position:absolute;left:80px;top:272px;width:856px;height:688px;padding:48px">
+    <div class="frames" style="top:136px;animation-duration:32s"><span class="sq has-img"><img src="assets/lab-01.jpg" alt="Pieza Content Lab 01" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-02.jpg" alt="Pieza Content Lab 02" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-03.jpg" alt="Pieza Content Lab 03" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-04.jpg" alt="Pieza Content Lab 04" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-05.jpg" alt="Pieza Content Lab 05" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-06.jpg" alt="Pieza Content Lab 06" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-07.jpg" alt="Pieza Content Lab 07" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-08.jpg" alt="Pieza Content Lab 08" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-09.jpg" alt="Pieza Content Lab 09" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-01.jpg" alt="Pieza Content Lab 01" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-02.jpg" alt="Pieza Content Lab 02" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-03.jpg" alt="Pieza Content Lab 03" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-04.jpg" alt="Pieza Content Lab 04" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-05.jpg" alt="Pieza Content Lab 05" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-06.jpg" alt="Pieza Content Lab 06" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-07.jpg" alt="Pieza Content Lab 07" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-08.jpg" alt="Pieza Content Lab 08" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-09.jpg" alt="Pieza Content Lab 09" loading="eager" decoding="async"></span></div>
+    <div class="kicker t-mint" style="position:relative;z-index:2">01</div>
+    <div class="lbl" style="font-size:56px;margin-top:12px">Foco lab de&nbsp;innovación</div>
+    <div class="sub t-sky" style="font-size:28px;margin-top:16px;max-width:720px">Probamos ideas, formatos y herramientas nuevas para el portafolio de&nbsp;CP.</div>
+  </div>
+  <div class="abs tile c-mint f" data-s="2" data-a="pop" style="position:absolute;left:984px;top:272px;width:856px;height:688px;padding:48px">
+    <svg viewBox="0 0 220 220" aria-hidden="true" style="position:absolute;left:48px;top:56px;width:280px;height:280px">
+      <g class="rot" style="--dur:8s;transform-origin:88px 120px"><circle cx="88" cy="120" r="50" style="fill:none;stroke:var(--navy);stroke-width:22;stroke-dasharray:12 10.44"/><circle cx="88" cy="120" r="20" style="fill:none;stroke:var(--navy);stroke-width:6"/></g>
+      <g class="rotr" style="--dur:5.3s;transform-origin:160px 62px"><circle cx="160" cy="62" r="30" style="fill:none;stroke:var(--blue);stroke-width:16;stroke-dasharray:8 7.7"/><circle cx="160" cy="62" r="10" style="fill:none;stroke:var(--blue);stroke-width:5"/></g>
+    </svg>
+    <div class="abs" style="right:64px;top:72px;width:200px;height:200px"><span class="ripple" style="--rc:var(--navy)"></span><span class="ripple" style="--rc:var(--navy)"></span><span class="ripple" style="--rc:var(--navy)"></span></div>
+    <div class="kicker" style="position:relative;z-index:2">02</div>
+    <div class="lbl" style="font-size:56px;margin-top:12px">Aprender a&nbsp;aprender</div>
+    <div class="sub" style="font-size:28px;margin-top:16px;max-width:720px">Cada brief es una oportunidad para aprender algo&nbsp;nuevo.</div>
+  </div>
+  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-navy" data-title="¿Dónde queda el DMI?">
+  <div class="abs kicker t-mint f" data-s="0" data-a="up" style="left:80px;top:200px">05 · La pregunta de&nbsp;hoy</div>
+  <h2 class="abs d-l split f" data-s="0" style="left:80px;top:252px;width:1000px;font-size:128px;--d:.1s">¿Dónde queda|el DMI?</h2>
+  <p class="abs body t-sky f" data-s="1" data-a="up" style="left:80px;top:640px;width:880px;font-size:36px">Hoy una IA puede diagramar una pantalla, redactar un copy y sugerir una paleta en&nbsp;segundos.</p>
+  <div class="abs" style="left:1180px;top:240px;width:560px;height:560px">
+    <svg viewBox="0 0 560 560" style="position:absolute;inset:0;overflow:visible" aria-hidden="true"><circle cx="280" cy="280" r="260" class="ring" style="stroke:var(--deep);stroke-width:3;stroke-dasharray:6 14"/></svg>
+    <div class="orb f" data-s="0" data-a="pop" style="left:120px;top:120px;width:320px;height:320px;--d:.8s"><div class="c-mint pulse" style="font-size:80px">DMI</div></div>
+    <div class="rot f" data-s="0" data-a="hl" style="position:absolute;inset:0;--dur:14s;--d:1.2s"><div class="orb" style="left:225px;top:-35px;width:110px;height:110px"><div class="c-blue rotr" style="font-size:36px;--dur:14s">IA</div></div></div>
+  </div>
+  <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-blue" data-title="05 · La IA no nos reemplaza">
   <canvas class="net" width="1920" height="1080" style="position:absolute;inset:0;opacity:.55"></canvas>
   <div class="marquee" style="top:96px;color:var(--white)"><div class="track" style="--dur:36s"><span>Innovación · Crecimiento · Cuidado ·</span><span>Innovación · Crecimiento · Cuidado ·</span><span>Innovación · Crecimiento · Cuidado ·</span><span>Innovación · Crecimiento · Cuidado ·</span></div></div>
-  <div class="abs idx f" data-s="0" data-a="up" style="left:80px;top:300px">01</div>
+  <div class="abs idx f" data-s="0" data-a="up" style="left:80px;top:300px">05</div>
   <h2 class="abs d-m split f" data-s="0" style="left:80px;top:384px;width:1600px;--d:.15s">La IA no nos va a reemplazar.</h2>
   <div class="abs f" data-s="1" data-a="blur" style="left:72px;top:540px">
-    <div class="d-xxl" style="font-size:260px">Nos potencia.</div>
+    <div class="d-xxl" style="font-size:260px">Nos&nbsp;potencia.</div>
     <svg width="1400" height="40" viewBox="0 0 1400 40" style="display:block;margin-top:8px" aria-hidden="true"><path class="draw" pathLength="1" d="M8 24 C 320 4, 760 40, 1390 14" style="fill:none;stroke:var(--mint);stroke-width:14;stroke-linecap:round;--d:.5s"/></svg>
   </div>
   <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 05 · DMI + IA -->
 <section class="slide s-navy" data-title="Preguntas correctas">
-  <div class="abs kicker t-mint f" data-s="0" data-a="up" style="left:80px;top:72px">01 · Inteligencia artificial</div>
+  <div class="abs kicker t-mint f" data-s="0" data-a="up" style="left:80px;top:72px">05 · Inteligencia&nbsp;artificial</div>
   <h2 class="abs d-s split f" data-s="0" style="left:80px;top:112px">La IA responde. Nosotros preguntamos.</h2>
   <div class="abs" style="left:80px;top:330px;width:1760px;height:460px;display:flex;align-items:center;justify-content:center;gap:40px">
     <div class="orb f" data-s="1" data-a="left" style="position:relative;width:340px;height:340px"><div class="bob c-mint" style="font-size:96px;--t:5s;--fy:-16px">DMI</div></div>
@@ -476,66 +688,80 @@ svg .f{transform-box:fill-box;transform-origin:center}
       <div class="pulse c-green" style="width:100%;height:100%;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:80px;font-weight:700;line-height:1">Criterio</div>
     </div>
   </div>
-  <p class="abs body t-sky f" data-s="6" data-a="up" style="left:80px;width:1760px;top:870px;text-align:center;font-size:40px">La IA es una excelente máquina de respuestas. Las preguntas correctas son nuestras.</p>
+  <p class="abs body t-sky f" data-s="6" data-a="up" style="left:80px;width:1760px;top:870px;text-align:center;font-size:40px">La IA es una excelente máquina de respuestas. Las preguntas correctas son&nbsp;nuestras.</p>
   <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 06 · IA VS DMI -->
 <section class="slide s-white" data-title="Lo que la IA no ve">
-  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">01 · Inteligencia artificial</div>
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">05 · Inteligencia&nbsp;artificial</div>
   <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px">Lo que la IA no ve</h2>
 
   <div class="abs f" data-s="1" data-a="left" style="left:80px;top:300px;width:776px">
-    <div class="pill c-blue" style="font-size:32px">IA · genera</div>
+    <div class="pill c-blue" style="font-size:32px">IA ·&nbsp;genera</div>
   </div>
   <div class="abs" style="left:80px;top:420px;width:776px;display:flex;flex-direction:column;gap:48px">
-    <div class="stmt f" data-s="1" data-a="left" style="--d:.15s"><i><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M20 4 L8 20 H18 L16 32 L28 16 H18 Z" style="fill:var(--white)"/></svg></i>Una interfaz limpia en segundos</div>
-    <div class="stmt f" data-s="1" data-a="left" style="--d:.3s"><i><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M20 4 L8 20 H18 L16 32 L28 16 H18 Z" style="fill:var(--white)"/></svg></i>La estructura de un sitio completo</div>
+    <div class="stmt f" data-s="1" data-a="left" style="--d:.15s"><i><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M20 4 L8 20 H18 L16 32 L28 16 H18 Z" style="fill:var(--white)"/></svg></i>Una interfaz limpia en&nbsp;segundos</div>
+    <div class="stmt f" data-s="1" data-a="left" style="--d:.3s"><i><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M20 4 L8 20 H18 L16 32 L28 16 H18 Z" style="fill:var(--white)"/></svg></i>La estructura de un sitio&nbsp;completo</div>
   </div>
 
   <div class="abs f num" data-s="2" data-a="spin" style="left:900px;top:520px;width:120px;text-align:center;font-size:64px;color:var(--sky)">vs</div>
 
   <div class="abs f" data-s="3" data-a="right" style="left:1064px;top:300px;width:776px">
-    <div class="pill c-green" style="font-size:32px">DMI · interpreta</div>
+    <div class="pill c-green" style="font-size:32px">DMI ·&nbsp;interpreta</div>
   </div>
   <div class="abs" style="left:1064px;top:420px;width:776px;display:flex;flex-direction:column;gap:48px">
-    <div class="stmt f" data-s="3" data-a="right" style="--d:.15s"><i style="background:var(--green)"><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M8 19 l7 7 l13 -15" style="fill:none;stroke:var(--navy);stroke-width:4;stroke-linecap:round;stroke-linejoin:round"/></svg></i>Lo que el cliente no dice en la reunión</div>
-    <div class="stmt f" data-s="4" data-a="right"><i style="background:var(--green)"><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M8 19 l7 7 l13 -15" style="fill:none;stroke:var(--navy);stroke-width:4;stroke-linecap:round;stroke-linejoin:round"/></svg></i>Los matices culturales de cada mercado</div>
-    <div class="stmt f" data-s="5" data-a="right"><i style="background:var(--green)"><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M8 19 l7 7 l13 -15" style="fill:none;stroke:var(--navy);stroke-width:4;stroke-linecap:round;stroke-linejoin:round"/></svg></i>Por qué esa pantalla resuelve el problema</div>
+    <div class="stmt f" data-s="3" data-a="right" style="--d:.15s"><i style="background:var(--green)"><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M8 19 l7 7 l13 -15" style="fill:none;stroke:var(--navy);stroke-width:4;stroke-linecap:round;stroke-linejoin:round"/></svg></i>Lo que el cliente no dice en la&nbsp;reunión</div>
+    <div class="stmt f" data-s="4" data-a="right"><i style="background:var(--green)"><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M8 19 l7 7 l13 -15" style="fill:none;stroke:var(--navy);stroke-width:4;stroke-linecap:round;stroke-linejoin:round"/></svg></i>Los matices culturales de cada&nbsp;mercado</div>
+    <div class="stmt f" data-s="5" data-a="right"><i style="background:var(--green)"><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M8 19 l7 7 l13 -15" style="fill:none;stroke:var(--navy);stroke-width:4;stroke-linecap:round;stroke-linejoin:round"/></svg></i>Por qué esa pantalla resuelve el&nbsp;problema</div>
   </div>
   <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 07 · COLOMBIA ≠ MÉXICO -->
 <section class="slide s-sand" data-title="Contexto cultural">
-  <div class="abs kicker f" data-s="0" data-a="up" style="left:80px;top:72px">01 · Inteligencia artificial</div>
+  <div class="abs kicker f" data-s="0" data-a="up" style="left:80px;top:72px">05 · Inteligencia&nbsp;artificial</div>
   <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px">El contexto no se genera</h2>
   <div class="abs" style="left:80px;top:320px;width:1760px;height:460px;display:flex;align-items:center;justify-content:center;gap:56px">
     <div class="orb f" data-s="1" data-a="left" style="position:relative;width:440px;height:440px"><div class="bob c-navy" style="font-size:84px;--t:5s;--fy:-18px">Colombia</div></div>
     <div class="f num" data-s="2" data-a="spin" style="font-size:220px;color:var(--coral)">≠</div>
     <div class="orb f" data-s="3" data-a="right" style="position:relative;width:440px;height:440px"><div class="bob c-blue" style="font-size:84px;--t:5.6s;--fy:18px">México</div></div>
   </div>
-  <p class="abs h3 f" data-s="4" data-a="up" style="left:80px;width:1760px;top:850px;text-align:center;font-weight:500">Una misma campaña no se percibe igual en dos mercados.</p>
+  <p class="abs h3 f" data-s="4" data-a="up" style="left:80px;width:1760px;top:850px;text-align:center;font-weight:500">Una misma campaña no se percibe igual en dos&nbsp;mercados.</p>
   <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 08 · DIVIDER 02 CONSULTOR -->
-<section class="slide s-mint" data-title="02 · Mindset consultor">
+<section class="slide s-surface" data-title="AI Slop vs. resultado real">
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">05 · Inteligencia&nbsp;artificial</div>
+  <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px">Mismo brief, otro criterio</h2>
+  <div class="abs f" data-s="1" data-a="card" style="left:80px;top:264px;width:856px">
+    <div class="browser" style="height:560px"><div class="bar-top"><i style="background:var(--coral)"></i><i style="background:var(--sand)"></i><i style="background:var(--green)"></i><span class="url"></span></div>
+      <div class="shot media"><img class="scroll" src="assets/ia-sin-criterio.jpg" alt="AI Slop" style="--dist:-1371px;--dur:14s;animation-delay:0s"></div></div>
+    <div style="display:flex;align-items:center;gap:16px;margin-top:24px"><span style="width:20px;height:20px;border-radius:50%;background:var(--coral);flex:none"></span><span class="h3" style="font-weight:700">AI Slop</span></div>
+    <div class="small t-ink" style="font-size:24px;margin-top:4px;padding-left:36px">Un brief web resuelto solo con&nbsp;IA</div>
+  </div>
+  <div class="abs f" data-s="2" data-a="card" style="left:984px;top:264px;width:856px">
+    <div class="browser" style="height:560px"><div class="bar-top"><i style="background:var(--coral)"></i><i style="background:var(--sand)"></i><i style="background:var(--green)"></i><span class="url"></span></div>
+      <div class="shot media"><img class="scroll" src="assets/ia-real.jpg" alt="Con criterio" style="--dist:-1914px;--dur:16s;animation-delay:2s"></div></div>
+    <div style="display:flex;align-items:center;gap:16px;margin-top:24px"><span style="width:20px;height:20px;border-radius:50%;background:var(--green);flex:none"></span><span class="h3" style="font-weight:700">Con criterio</span></div>
+    <div class="small t-ink" style="font-size:24px;margin-top:4px;padding-left:36px">Diseñado para el contexto y el entorno&nbsp;real</div>
+  </div>
+  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
+</section>
+
+<section class="slide s-mint" data-title="06 · Mindset consultor">
   <div class="marquee" style="top:96px;color:var(--navy)"><div class="track" style="--dur:40s"><span>Negociar · Explicar · Priorizar ·</span><span>Negociar · Explicar · Priorizar ·</span><span>Negociar · Explicar · Priorizar ·</span><span>Negociar · Explicar · Priorizar ·</span></div></div>
   <svg class="full" viewBox="0 0 1920 1080" aria-hidden="true"><g class="cs" style="--d:0.25s"><g class="burst" style="stroke:var(--navy);stroke-width:2"><line x1="1404.0" y1="330.0" x2="1452.0" y2="330.0"/><line x1="1403.2" y1="334.8" x2="1448.3" y2="351.2"/><line x1="1400.7" y1="339.0" x2="1437.5" y2="369.9"/><line x1="1397.0" y1="342.1" x2="1421.0" y2="383.7"/><line x1="1392.4" y1="343.8" x2="1400.8" y2="391.1"/><line x1="1387.6" y1="343.8" x2="1379.2" y2="391.1"/><line x1="1383.0" y1="342.1" x2="1359.0" y2="383.7"/><line x1="1379.3" y1="339.0" x2="1342.5" y2="369.9"/><line x1="1376.8" y1="334.8" x2="1331.7" y2="351.2"/><line x1="1376.0" y1="330.0" x2="1328.0" y2="330.0"/><line x1="1376.8" y1="325.2" x2="1331.7" y2="308.8"/><line x1="1379.3" y1="321.0" x2="1342.5" y2="290.1"/><line x1="1383.0" y1="317.9" x2="1359.0" y2="276.3"/><line x1="1387.6" y1="316.2" x2="1379.2" y2="268.9"/><line x1="1392.4" y1="316.2" x2="1400.8" y2="268.9"/><line x1="1397.0" y1="317.9" x2="1421.0" y2="276.3"/><line x1="1400.7" y1="321.0" x2="1437.5" y2="290.1"/><line x1="1403.2" y1="325.2" x2="1448.3" y2="308.8"/></g></g><g class="cs" style="--d:0.33s"><circle cx="1560" cy="330" r="49.0" style="fill:none;stroke:var(--navy);stroke-width:26"/></g><g class="cs" style="--d:0.41s"><g class="conc"><circle cx="1730" cy="330" r="18" style="fill:none;stroke:var(--white);stroke-width:2"/><circle cx="1730" cy="330" r="30" style="fill:none;stroke:var(--white);stroke-width:2"/><circle cx="1730" cy="330" r="42" style="fill:none;stroke:var(--white);stroke-width:2"/><circle cx="1730" cy="330" r="54" style="fill:none;stroke:var(--white);stroke-width:2"/><circle cx="1730" cy="330" r="62" style="fill:none;stroke:var(--white);stroke-width:2"/></g></g><g class="cs" style="--d:0.49s"><circle cx="1390" cy="500" r="49.0" style="fill:none;stroke:var(--blue);stroke-width:26"/></g><g class="cs" style="--d:0.57s"><g class="burst" style="stroke:var(--white);stroke-width:2"><line x1="1574.0" y1="500.0" x2="1622.0" y2="500.0"/><line x1="1573.2" y1="504.8" x2="1618.3" y2="521.2"/><line x1="1570.7" y1="509.0" x2="1607.5" y2="539.9"/><line x1="1567.0" y1="512.1" x2="1591.0" y2="553.7"/><line x1="1562.4" y1="513.8" x2="1570.8" y2="561.1"/><line x1="1557.6" y1="513.8" x2="1549.2" y2="561.1"/><line x1="1553.0" y1="512.1" x2="1529.0" y2="553.7"/><line x1="1549.3" y1="509.0" x2="1512.5" y2="539.9"/><line x1="1546.8" y1="504.8" x2="1501.7" y2="521.2"/><line x1="1546.0" y1="500.0" x2="1498.0" y2="500.0"/><line x1="1546.8" y1="495.2" x2="1501.7" y2="478.8"/><line x1="1549.3" y1="491.0" x2="1512.5" y2="460.1"/><line x1="1553.0" y1="487.9" x2="1529.0" y2="446.3"/><line x1="1557.6" y1="486.2" x2="1549.2" y2="438.9"/><line x1="1562.4" y1="486.2" x2="1570.8" y2="438.9"/><line x1="1567.0" y1="487.9" x2="1591.0" y2="446.3"/><line x1="1570.7" y1="491.0" x2="1607.5" y2="460.1"/><line x1="1573.2" y1="495.2" x2="1618.3" y2="478.8"/></g></g><g class="cs" style="--d:0.65s"><circle cx="1730" cy="500" r="57.0" style="fill:none;stroke:var(--white);stroke-width:10"/></g><g class="cs" style="--d:0.73s"><g class="conc"><circle cx="1390" cy="670" r="18" style="fill:none;stroke:var(--navy);stroke-width:2"/><circle cx="1390" cy="670" r="30" style="fill:none;stroke:var(--navy);stroke-width:2"/><circle cx="1390" cy="670" r="42" style="fill:none;stroke:var(--navy);stroke-width:2"/><circle cx="1390" cy="670" r="54" style="fill:none;stroke:var(--navy);stroke-width:2"/><circle cx="1390" cy="670" r="62" style="fill:none;stroke:var(--navy);stroke-width:2"/></g></g><g class="cs" style="--d:0.81s"><circle cx="1560" cy="670" r="40.0" style="fill:none;stroke:var(--navy);stroke-width:44"/></g><g class="cs" style="--d:0.89s"><circle cx="1730" cy="670" r="61.0" style="fill:none;stroke:var(--navy);stroke-width:2"/></g><g class="cs" style="--d:0.97s"><g class="burst" style="stroke:var(--blue);stroke-width:2"><line x1="1404.0" y1="840.0" x2="1452.0" y2="840.0"/><line x1="1403.2" y1="844.8" x2="1448.3" y2="861.2"/><line x1="1400.7" y1="849.0" x2="1437.5" y2="879.9"/><line x1="1397.0" y1="852.1" x2="1421.0" y2="893.7"/><line x1="1392.4" y1="853.8" x2="1400.8" y2="901.1"/><line x1="1387.6" y1="853.8" x2="1379.2" y2="901.1"/><line x1="1383.0" y1="852.1" x2="1359.0" y2="893.7"/><line x1="1379.3" y1="849.0" x2="1342.5" y2="879.9"/><line x1="1376.8" y1="844.8" x2="1331.7" y2="861.2"/><line x1="1376.0" y1="840.0" x2="1328.0" y2="840.0"/><line x1="1376.8" y1="835.2" x2="1331.7" y2="818.8"/><line x1="1379.3" y1="831.0" x2="1342.5" y2="800.1"/><line x1="1383.0" y1="827.9" x2="1359.0" y2="786.3"/><line x1="1387.6" y1="826.2" x2="1379.2" y2="778.9"/><line x1="1392.4" y1="826.2" x2="1400.8" y2="778.9"/><line x1="1397.0" y1="827.9" x2="1421.0" y2="786.3"/><line x1="1400.7" y1="831.0" x2="1437.5" y2="800.1"/><line x1="1403.2" y1="835.2" x2="1448.3" y2="818.8"/></g></g><g class="cs" style="--d:1.05s"><circle cx="1560" cy="840" r="57.0" style="fill:none;stroke:var(--white);stroke-width:10"/></g><g class="cs" style="--d:1.13s"><circle cx="1730" cy="840" r="37.0" style="fill:none;stroke:var(--white);stroke-width:50"/></g></svg>
-  <div class="abs idx f" data-s="0" data-a="up" style="left:80px;top:300px">02</div>
+  <div class="abs idx f" data-s="0" data-a="up" style="left:80px;top:300px">06</div>
   <h2 class="abs d-xl split f" data-s="0" style="left:80px;top:384px;width:1200px;--d:.15s">Mindset|consultor</h2>
-  <p class="abs h3 f" data-s="0" data-a="up" style="left:80px;top:760px;font-weight:400;--d:.8s">Del estudiante al profesional corporativo.</p>
+  <p class="abs h3 f" data-s="0" data-a="up" style="left:80px;top:760px;font-weight:400;--d:.8s">Acompañar al cliente a resolver sus necesidades,&nbsp;end-to-end.</p>
   <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 09 · PM SUPERPODER -->
 <section class="slide s-white" data-title="Project management">
-  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">02 · Mindset consultor</div>
-  <div class="abs col" style="left:80px;top:112px;width:820px">
-    <h2 class="d-m split f" data-s="0" style="font-size:88px">Project management,|un superpoder</h2>
-    <p class="body t-ink f" data-s="0" data-a="up" style="width:640px;--d:.5s">El puente entre una idea creativa y la realidad.</p>
-    <div class="f" data-s="5" data-a="up" style="--d:1.3s"><div class="pill c-green">Va mucho más allá de un Excel</div></div>
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">06 · Mindset&nbsp;consultor</div>
+  <div class="abs col" style="left:80px;top:112px;width:900px">
+    <h2 class="d-m split f" data-s="0" style="font-size:80px">Project management,|un superpoder</h2>
+    <p class="body t-ink f" data-s="0" data-a="up" style="width:640px;--d:.5s">El puente entre una idea creativa y la&nbsp;realidad.</p>
+    <div class="f" data-s="5" data-a="up" style="--d:1.3s"><div class="pill c-green">Va mucho más allá de un&nbsp;Excel</div></div>
   </div>
 
   <svg class="full" viewBox="0 0 1920 1080" aria-hidden="true">
@@ -552,12 +778,11 @@ svg .f{transform-box:fill-box;transform-origin:center}
   </div>
   <div class="orb f" data-s="1" data-a="pop" style="left:1250px;top:230px;width:180px;height:180px"><div class="bob c-blue" style="font-size:28px;--t:4s;--fy:-10px">Negociar<br>tiempos</div></div>
   <div class="orb f" data-s="2" data-a="pop" style="left:1520px;top:500px;width:180px;height:180px;--d:1s"><div class="bob c-green" style="font-size:28px;--t:4.5s;--fx:10px;--fy:0px">Explicar<br>decisiones</div></div>
-  <div class="orb f" data-s="3" data-a="pop" style="left:1250px;top:770px;width:180px;height:180px;--d:1s"><div class="bob c-sand" style="font-size:28px;--t:5s;--fy:10px">Priorizar<br>bajo presión</div></div>
-  <div class="orb f" data-s="4" data-a="pop" style="left:980px;top:500px;width:180px;height:180px;--d:1s"><div class="bob c-navy" style="font-size:28px;--t:4.2s;--fx:-10px;--fy:0px">Entregar<br>a tiempo</div></div>
+  <div class="orb f" data-s="3" data-a="pop" style="left:1250px;top:770px;width:180px;height:180px;--d:1s"><div class="bob c-sand" style="font-size:28px;--t:5s;--fy:10px">Priorizar<br>bajo&nbsp;presión</div></div>
+  <div class="orb f" data-s="4" data-a="pop" style="left:980px;top:500px;width:180px;height:180px;--d:1s"><div class="bob c-navy" style="font-size:28px;--t:4.2s;--fx:-10px;--fy:0px">Entregar<br>a&nbsp;tiempo</div></div>
   <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 10 · QUOTE -->
 <section class="slide s-navy" data-title="ADN de marca">
   <div class="abs bob num" style="left:64px;top:40px;font-size:400px;color:var(--mint);line-height:1;--t:7s">“</div>
   <p class="abs f" data-s="0" data-a="blur" style="left:80px;top:330px;width:1600px;font-size:104px;font-weight:600;line-height:1.18;letter-spacing:-.02em;isolation:isolate">
@@ -570,206 +795,76 @@ svg .f{transform-box:fill-box;transform-origin:center}
   <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 11 · DIVIDER 03 BEX -->
-<section class="slide s-navy" data-title="03 · BEX">
-  <canvas class="globe" width="1920" height="1080" style="position:absolute;inset:0"></canvas>
-  <div class="abs idx t-mint f" data-s="0" data-a="up" style="left:80px;top:260px">03</div>
-  <h2 class="abs d-xxl split f" data-s="0" style="left:80px;top:340px;--d:.1s">BEX</h2>
-  <p class="abs d-s split f" data-s="0" style="left:80px;top:560px;width:900px;--d:.5s">Brand Experience Center</p>
-  <div class="abs f" data-s="0" data-a="up" style="left:80px;top:800px;--d:1s"><div class="pill c-mint"><span class="dot"></span>Presenta · Valentina Chavez</div></div>
-  <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
-</section>
-
-<!-- 12 · 94% -->
-<section class="slide s-white" data-title="94% desde Cali">
-  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">03 · BEX</div>
-  <div class="abs col" style="left:80px;top:112px;width:840px">
-    <h2 class="d-l split f" data-s="0" style="font-size:120px">Desde Cali,|para el mundo</h2>
-    <p class="body t-ink f" data-s="2" data-a="up" style="width:680px;font-size:44px;line-height:1.25;font-weight:500">de los sitios web de Colgate-Palmolive en el mundo se construyen y gestionan desde Cali.</p>
-    <div class="f" data-s="2" data-a="left" style="--d:.3s"><div class="pill c-navy" style="font-size:26px">Orgullo local, impacto global</div></div>
-  </div>
-  <div class="f" data-s="1" data-a="fade">
-    <svg class="full" viewBox="0 0 1920 1080" aria-hidden="true">
-      <circle cx="1360" cy="560" r="360" class="ring" style="stroke:var(--surface2);stroke-width:36"/>
-      <circle class="ring94" cx="1360" cy="560" r="360" pathLength="1" transform="rotate(-90 1360 560)" style="fill:none;stroke:var(--blue);stroke-width:36;stroke-linecap:round"/>
-    </svg>
-    <div class="abs num t-navy" style="left:1000px;top:440px;width:720px;text-align:center;font-size:260px" data-count="94" data-suffix="%">0%</div>
-  </div>
-  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
-</section>
-
-<!-- 13 · ESCALA BEX -->
-<section class="slide s-white" data-title="Escala BEX">
-  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">03 · BEX · Desde 2012 · 50+ profesionales</div>
-  <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px;width:900px">La escala|de BEX</h2>
-  <div class="abs f" data-s="1" data-a="left" style="left:80px;top:420px"><div class="num t-blue" style="font-size:120px" data-count="600" data-suffix="+">0+</div><div class="small t-ink">Sitios web actualizados</div></div>
-  <div class="abs f" data-s="2" data-a="left" style="left:80px;top:610px"><div class="num t-navy" style="font-size:120px" data-count="70" data-suffix="+">0+</div><div class="small t-ink">Mercados atendidos</div></div>
-  <div class="abs f" data-s="3" data-a="left" style="left:80px;top:800px"><div class="num" style="font-size:120px;color:var(--deep)" data-count="40" data-prefix="~">~0</div><div class="small t-ink">Marcas</div></div>
-
-  <svg class="full" viewBox="0 0 1920 1080" aria-hidden="true">
-    <circle cx="1380" cy="560" r="320" class="ring" style="stroke:var(--surface2);stroke-width:3;stroke-dasharray:6 12"/>
-    <g class="f" data-s="3" data-a="fade" style="fill:none;stroke-width:4;--d:1.6s">
-      <path class="draw" pathLength="1" d="M1380 560 L1380 240" style="stroke:var(--sky);--d:1.6s"/>
-      <path class="draw" pathLength="1" d="M1380 560 L1700 560" style="stroke:var(--sky);--d:1.7s"/>
-      <path class="draw" pathLength="1" d="M1380 560 L1380 880" style="stroke:var(--sky);--d:1.8s"/>
-      <path class="draw" pathLength="1" d="M1380 560 L1060 560" style="stroke:var(--sky);--d:1.9s"/>
-      <path d="M1380 560 L1380 240 M1380 560 L1700 560 M1380 560 L1380 880 M1380 560 L1060 560" style="stroke:var(--blue);stroke-dasharray:6 24;animation:flow 1.2s linear infinite"/>
-    </g>
-  </svg>
-  <div class="orb" style="left:1280px;top:460px;width:200px;height:200px">
-    <span class="ripple" style="--rc:var(--blue)"></span><span class="ripple" style="--rc:var(--blue)"></span>
-    <div class="c-blue pulse" style="width:100%;height:100%;border-radius:50%;display:grid;place-items:center;font-size:52px;font-weight:700">Cali</div>
-  </div>
-  <div class="orb f" data-s="3" data-a="pop" style="left:1295px;top:155px;width:170px;height:170px;--d:2.1s"><div class="bob c-sky" style="font-size:26px;--t:4s;--fy:-8px">Cuidado<br>oral</div></div>
-  <div class="orb f" data-s="3" data-a="pop" style="left:1615px;top:475px;width:170px;height:170px;--d:2.25s"><div class="bob c-mint" style="font-size:26px;--t:4.4s;--fy:8px">Cuidado<br>personal</div></div>
-  <div class="orb f" data-s="3" data-a="pop" style="left:1295px;top:795px;width:170px;height:170px;--d:2.4s"><div class="bob c-sand" style="font-size:26px;--t:5s;--fy:-8px">Cuidado<br>del hogar</div></div>
-  <div class="orb f" data-s="3" data-a="pop" style="left:975px;top:475px;width:170px;height:170px;--d:2.55s"><div class="bob c-green" style="font-size:24px;--t:4.6s;--fy:8px">Nutrición<br>de mascotas</div></div>
-  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
-</section>
-
-<!-- 14 · SERVICIOS BEX -->
-<section class="slide s-surface" data-title="Servicios BEX">
-  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">03 · BEX</div>
-  <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px">Lo que hacemos en BEX</h2>
-  <div class="abs f" data-s="1" data-a="card" style="left:80px;top:290px;width:555px">
-    <div class="browser"><div class="bar-top"><i style="background:var(--coral)"></i><i style="background:var(--sand)"></i><i style="background:var(--green)"></i><span class="url"></span></div>
-      <div class="shot media"><img class="scroll" src="assets/bex-03.jpg" alt="Sitio de marca Colgate-Palmolive" style="--dist:-968px;--dur:13s"></div></div>
-    <div class="h3" style="margin-top:24px;font-weight:700">E-commerce e integraciones</div><div class="small t-ink" style="font-size:24px">Buy now · Ratings &amp; reviews · Google Tag Manager</div>
-  </div>
-  <div class="abs f" data-s="2" data-a="card" style="left:683px;top:290px;width:555px">
-    <div class="browser"><div class="bar-top"><i style="background:var(--coral)"></i><i style="background:var(--sand)"></i><i style="background:var(--green)"></i><span class="url"></span></div>
-      <div class="shot media"><img class="scroll" src="assets/bex-02.jpg" alt="Sitio de marca Colgate-Palmolive" style="--dist:-1429px;--dur:15s;animation-delay:-5s"></div></div>
-    <div class="h3" style="margin-top:24px;font-weight:700">Web admin y campañas</div><div class="small t-ink" style="font-size:24px">Campañas IMC · PLP/PDP · Landing pages · Actualizaciones masivas</div>
-  </div>
-  <div class="abs f" data-s="3" data-a="card" style="left:1286px;top:290px;width:555px">
-    <div class="browser"><div class="bar-top"><i style="background:var(--coral)"></i><i style="background:var(--sand)"></i><i style="background:var(--green)"></i><span class="url"></span></div>
-      <div class="shot media"><video src="assets/bex-01.mp4" poster="assets/bex-01-poster.jpg" muted loop autoplay playsinline preload="auto"></video></div></div>
-    <div class="h3" style="margin-top:24px;font-weight:700">Experiencias digitales de marca</div><div class="small t-ink" style="font-size:24px">Formularios · Quizzes con Jebbit · Canales globales de YouTube</div>
-  </div>
-  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
-</section>
-
-<!-- 15 · DIVIDER 04 CONTENT LAB -->
-<section class="slide s-sand" data-title="04 · Content Lab">
-  <svg class="full" viewBox="0 0 1920 1080" aria-hidden="true"><g class="th-scroll" id="threads"></g></svg>
-  <div class="abs idx f" data-s="0" data-a="up" style="left:80px;top:320px">04</div>
-  <h2 class="abs d-xl split f" data-s="0" style="left:80px;top:400px;width:1200px;--d:.15s">Content|Lab</h2>
-  <div class="abs f" data-s="0" data-a="up" style="left:80px;top:800px;--d:1s"><div class="pill c-navy"><span class="dot" style="background:var(--coral)"></span>Presenta · Jose Bolaños</div></div>
-  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
-</section>
-
-<!-- 16 · CLAB ORBIT -->
-<section class="slide s-navy" data-title="Equipo Content Lab">
-  <div class="abs kicker t-mint f" data-s="0" data-a="up" style="left:80px;top:72px">04 · Content Lab</div>
-  <div class="abs col" style="left:80px;top:112px;width:700px">
-    <h2 class="d-m split f" data-s="0" style="font-size:88px">Socio estratégico|in-house</h2>
-    <p class="body t-sky f" data-s="0" data-a="up" style="width:600px;--d:.5s">Un equipo creativo de diseñadores gráficos para todo el portafolio de CP.</p>
-  </div>
-  <div class="abs" style="left:810px;top:110px;width:900px;height:900px">
-    <svg viewBox="0 0 900 900" style="position:absolute;inset:0;overflow:visible" aria-hidden="true"><circle cx="450" cy="450" r="360" class="ring" style="stroke:var(--deep);stroke-width:3;stroke-dasharray:4 14"/></svg>
-    <div class="rot" style="position:absolute;inset:0;--dur:90s">
-      <svg viewBox="0 0 900 900" style="position:absolute;inset:0;overflow:visible" aria-hidden="true">
-        <path class="draw f" data-s="1" data-a="hl" pathLength="1" d="M450 450 L450 90" style="stroke:var(--sky);stroke-width:3"/>
-        <path class="draw f" data-s="2" data-a="hl" pathLength="1" d="M450 450 L792 339" style="stroke:var(--sky);stroke-width:3"/>
-        <path class="draw f" data-s="3" data-a="hl" pathLength="1" d="M450 450 L662 741" style="stroke:var(--sky);stroke-width:3"/>
-        <path class="draw f" data-s="4" data-a="hl" pathLength="1" d="M450 450 L238 741" style="stroke:var(--sky);stroke-width:3"/>
-        <path class="draw f" data-s="5" data-a="hl" pathLength="1" d="M450 450 L108 339" style="stroke:var(--sky);stroke-width:3"/>
-      </svg>
-      <div class="abs" style="left:355px;top:-5px;width:190px;height:190px"><div class="f" data-s="1" data-a="pop" style="width:100%;height:100%"><div class="rotr c-mint" style="--dur:90s;width:100%;height:100%;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:30px;font-weight:700;line-height:1.05">Triage</div></div></div>
-      <div class="abs" style="left:697px;top:244px;width:190px;height:190px"><div class="f" data-s="2" data-a="pop" style="width:100%;height:100%"><div class="rotr c-sand" style="--dur:90s;width:100%;height:100%;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:30px;font-weight:700;line-height:1.05">Flujos de<br>trabajo</div></div></div>
-      <div class="abs" style="left:567px;top:646px;width:190px;height:190px"><div class="f" data-s="3" data-a="pop" style="width:100%;height:100%"><div class="rotr c-green" style="--dur:90s;width:100%;height:100%;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:30px;font-weight:700;line-height:1.05">Prioridades</div></div></div>
-      <div class="abs" style="left:143px;top:646px;width:190px;height:190px"><div class="f" data-s="4" data-a="pop" style="width:100%;height:100%"><div class="rotr c-sky" style="--dur:90s;width:100%;height:100%;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:30px;font-weight:700;line-height:1.05">ETAs<br>a tiempo</div></div></div>
-      <div class="abs" style="left:13px;top:244px;width:190px;height:190px"><div class="f" data-s="5" data-a="pop" style="width:100%;height:100%"><div class="rotr c-white" style="--dur:90s;width:100%;height:100%;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:30px;font-weight:700;line-height:1.05">Client<br>centric</div></div></div>
-    </div>
-    <div class="abs" style="left:300px;top:300px;width:300px;height:300px">
-      <span class="ripple" style="--rc:var(--blue)"></span><span class="ripple" style="--rc:var(--blue)"></span><span class="ripple" style="--rc:var(--blue)"></span>
-      <div class="c-blue pulse" style="width:100%;height:100%;border-radius:50%;display:grid;place-items:center;font-size:64px;font-weight:700;text-align:center;line-height:1">Content<br>Lab</div>
-    </div>
-  </div>
-  <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
-</section>
-
-<!-- 17 · POR QUÉ CLAB -->
-<section class="slide s-white" data-title="Por qué Content Lab">
-  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">04 · Content Lab</div>
-  <h2 class="abs d-m split f" data-s="0" style="left:80px;top:104px">Por qué Content Lab</h2>
-  <div class="bento">
-    <div class="tile c-navy f" data-s="1" data-a="pop" style="grid-row:1 / 3">
-      <div class="abs" style="left:50%;top:30%;width:180px;height:180px;margin:-90px 0 0 -90px">
-        <span class="ripple"></span><span class="ripple"></span><span class="ripple"></span>
-        <div class="pulse" style="width:100%;height:100%;border-radius:50%;background:var(--white);display:grid;place-items:center"><svg width="80" height="80" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z" style="fill:var(--navy)"/></svg></div>
-      </div>
-      <div class="eq"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i></div>
-      <div class="lbl num" style="font-size:180px"><span data-count="4.8" data-dec="1">0,0</span><span style="font-size:80px;color:var(--sky)">/5</span></div>
-      <div class="sub t-sky" style="font-size:32px">Satisfacción del cliente</div>
-    </div>
-    <div class="tile c-blue f" data-s="2" data-a="pop" style="grid-column:2 / 4">
-      <div class="frames" style="top:24px;animation-duration:32s"><span class="sq has-img"><img src="assets/lab-01.jpg" alt="Pieza Content Lab 01" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-02.jpg" alt="Pieza Content Lab 02" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-03.jpg" alt="Pieza Content Lab 03" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-04.jpg" alt="Pieza Content Lab 04" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-05.jpg" alt="Pieza Content Lab 05" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-06.jpg" alt="Pieza Content Lab 06" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-07.jpg" alt="Pieza Content Lab 07" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-08.jpg" alt="Pieza Content Lab 08" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-09.jpg" alt="Pieza Content Lab 09" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-01.jpg" alt="Pieza Content Lab 01" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-02.jpg" alt="Pieza Content Lab 02" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-03.jpg" alt="Pieza Content Lab 03" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-04.jpg" alt="Pieza Content Lab 04" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-05.jpg" alt="Pieza Content Lab 05" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-06.jpg" alt="Pieza Content Lab 06" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-07.jpg" alt="Pieza Content Lab 07" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-08.jpg" alt="Pieza Content Lab 08" loading="eager" decoding="async"></span><span class="sq has-img"><img src="assets/lab-09.jpg" alt="Pieza Content Lab 09" loading="eager" decoding="async"></span></div>
-      <div class="lbl num" style="font-size:96px"><span data-count="10" data-prefix="+">+0</span> años</div><div class="sub">Diseñando para el portafolio de CP</div>
-    </div>
-    <div class="tile c-mint f" data-s="3" data-a="pop">
-      <div class="cube-wrap" style="width:110px;height:110px;top:32px;right:40px"><div class="cube" style="width:110px;height:110px"><i style="transform:translateZ(55px)"></i><i style="transform:rotateY(180deg) translateZ(55px)"></i><i style="transform:rotateY(90deg) translateZ(55px)"></i><i style="transform:rotateY(-90deg) translateZ(55px)"></i><i style="transform:rotateX(90deg) translateZ(55px)"></i><i style="transform:rotateX(-90deg) translateZ(55px)"></i></div></div>
-      <div class="lbl">On-time mentality</div><div class="sub">Apego estricto a los ETAs</div>
-    </div>
-    <div class="tile c-sand f" data-s="4" data-a="pop">
-      <div class="cc" aria-hidden="true"><svg viewBox="0 0 140 140" class="rot" style="--dur:14s"><circle cx="70" cy="70" r="58" style="fill:none;stroke:var(--navy);stroke-width:2;stroke-dasharray:4 8;opacity:.5"/><circle cx="70" cy="12" r="9" style="fill:var(--blue)"/><circle cx="120.2" cy="99" r="9" style="fill:var(--green)"/><circle cx="19.8" cy="99" r="9" style="fill:var(--coral)"/></svg><span class="ripple" style="--rc:var(--navy);inset:30px"></span><div class="pulse cc-c"><svg width="34" height="34" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" style="fill:var(--white)"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z" style="fill:var(--white)"/></svg></div></div>
-      <div class="lbl">Client centric</div><div class="sub">El cliente en el centro de cada entrega</div>
-    </div>
-  </div>
-  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
-</section>
-
-<!-- 17b · REEL -->
-<section class="slide s-navy" data-title="Reel Content Lab">
-  <div class="abs kicker t-mint f" data-s="0" data-a="up" style="left:80px;top:72px">04 · Content Lab</div>
-  <h2 class="abs d-s split f" data-s="0" style="left:80px;top:112px">Nuestro reel</h2>
-  <div class="reel has-video f" data-s="0" data-a="blur" style="--d:.3s">
-    <video id="reel" src="assets/reel-content-lab.mp4" poster="assets/reel-poster.jpg" playsinline preload="auto"></video>
-  </div>
-  <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
-</section>
-
-<!-- 18 · DIVIDER 05 CASO TU HOGAR -->
-<section class="slide s-blue" data-title="05 · Caso Tu Hogar">
+<section class="slide s-blue" data-title="07 · Caso Tu Hogar">
   <div class="abs" style="left:1300px;top:300px;width:480px;height:480px">
     <div class="abs" style="left:90px;top:90px;width:300px;height:300px;border-radius:50%;border:6px solid var(--white);animation:converge 6s var(--ease) infinite;--cx:-120px;--cy:-60px"></div>
     <div class="abs" style="left:90px;top:90px;width:300px;height:300px;border-radius:50%;border:6px solid var(--mint);animation:converge 6s var(--ease) infinite;--cx:120px;--cy:-60px"></div>
     <div class="abs" style="left:90px;top:90px;width:300px;height:300px;border-radius:50%;border:6px solid var(--navy);animation:converge 6s var(--ease) infinite;--cx:0px;--cy:120px"></div>
   </div>
-  <div class="abs idx f" data-s="0" data-a="up" style="left:80px;top:300px">05</div>
+  <div class="abs idx f" data-s="0" data-a="up" style="left:80px;top:300px">07</div>
   <h2 class="abs d-xl split f" data-s="0" style="left:80px;top:384px;width:1150px;--d:.15s">Caso|Tu Hogar</h2>
-  <p class="abs h3 f" data-s="0" data-a="up" style="left:80px;top:760px;font-weight:400;--d:.9s">Un proyecto conjunto entre BEX y Content Lab.</p>
+  <p class="abs h3 f" data-s="0" data-a="up" style="left:80px;top:760px;font-weight:400;--d:.9s">Un proyecto conjunto entre BEX y Content&nbsp;Lab.</p>
   <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 19 · VENN + TIMELINE -->
+<section class="slide s-white" data-title="Qué es Tu Hogar">
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">07 · Caso Tu&nbsp;Hogar</div>
+  <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px">¿Qué es Tu Hogar?</h2>
+  <p class="abs f t-navy" data-s="1" data-a="up" style="left:80px;top:300px;width:1300px;font-size:52px;font-weight:500;line-height:1.25">Una página de contenido que cobija las marcas de <span class="ul" style="--d:.6s;--uc:var(--blue)">cuidado del hogar</span> en&nbsp;LATAM.</p>
+  <div class="abs f" data-s="2" data-a="pop" style="left:320px;top:620px;width:260px;height:260px;--d:0.00s"><img class="bob" src="assets/logo-ajax.png" alt="Ajax" style="width:260px;height:260px;display:block;--t:5s;--fy:-10px"></div>
+  <div class="abs f" data-s="2" data-a="pop" style="left:660px;top:620px;width:260px;height:260px;--d:0.15s"><img class="bob" src="assets/logo-suavitel.png" alt="Suavitel" style="width:260px;height:260px;display:block;--t:6s;--fy:-10px"></div>
+  <div class="abs f" data-s="2" data-a="pop" style="left:1000px;top:620px;width:260px;height:260px;--d:0.30s"><img class="bob" src="assets/logo-fabuloso.png" alt="Fabuloso" style="width:260px;height:260px;display:block;--t:7s;--fy:-10px"></div>
+  <div class="abs f" data-s="2" data-a="pop" style="left:1340px;top:620px;width:260px;height:260px;--d:0.45s"><img class="bob" src="assets/logo-axion.png" alt="Axion" style="width:260px;height:260px;display:block;--t:5s;--fy:-10px"></div>
+  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
+</section>
+
 <section class="slide s-white" data-title="Tu Hogar en equipo">
-  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">05 · Caso Tu Hogar</div>
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">07 · Caso Tu&nbsp;Hogar</div>
   <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px">Un caso crossfuncional</h2>
-  <div class="venn f" data-s="1" data-a="left" style="left:330px;top:290px;background:var(--mint-a);align-items:flex-start;justify-content:flex-start"><div>BEX<div style="font-size:26px;font-weight:600;margin-top:4px">LATAM Web</div></div></div>
+  <div class="venn f" data-s="1" data-a="left" style="left:330px;top:290px;background:var(--mint-a);align-items:flex-start;justify-content:flex-start"><div>BEX<div style="font-size:26px;font-weight:600;margin-top:4px">LATAM&nbsp;Web</div></div></div>
   <div class="venn f" data-s="2" data-a="right" style="left:610px;top:290px;background:var(--sky-a);align-items:flex-start;justify-content:flex-end;text-align:right">Content<br>Lab</div>
   <div class="venn f" data-s="3" data-a="up" style="left:470px;top:530px;background:var(--sand-a);align-items:flex-end;justify-content:center">Marca</div>
   <div class="abs f" data-s="4" data-a="pop" style="left:580px;top:540px;width:240px;height:120px;display:grid;place-items:center">
     <span class="ripple" style="--rc:var(--blue);border-radius:999px"></span><span class="ripple" style="--rc:var(--blue);border-radius:999px"></span>
-    <div class="pill c-navy" style="font-size:32px">Tu Hogar</div>
+    <div class="pill c-navy" style="font-size:32px">Tu&nbsp;Hogar</div>
   </div>
   <svg class="full" viewBox="0 0 1920 1080" aria-hidden="true"><path class="draw f" data-s="5" data-a="hl" pathLength="1" d="M1156 312 L1156 820" style="stroke:var(--surface2);stroke-width:4;--d:.2s"/></svg>
-  <div class="tl-item f" data-s="5" data-a="right" style="top:292px"><div class="h3" style="font-weight:700;font-size:40px">El reto</div><div class="tl-txt">El contenido existente no conectaba con las motivaciones, dudas o intereses reales de la audiencia, limitando el engagement y la relevancia de la marca.</div></div>
-  <div class="tl-item f" data-s="6" data-a="right" style="top:520px"><div class="h3" style="font-weight:700;font-size:40px">Cómo lo resolvimos</div><div class="tl-txt">Se definieron y desarrollaron narrativas y recursos alineados a pilares de interés del usuario (educativos, de valor y estilo de vida), priorizando resolver sus necesidades antes de vender.</div></div>
-  <div class="tl-item f" data-s="7" data-a="right" style="top:748px"><div class="h3" style="font-weight:700;font-size:40px">Lo que aprendimos</div><div class="tl-txt">El contenido enfocado en las prioridades del usuario construye autoridad de marca, incrementa el tiempo de permanencia y fomenta una relación de confianza a largo plazo.</div></div>
+  <div class="tl-item f" data-s="5" data-a="right" style="top:292px"><div class="h3" style="font-weight:700;font-size:40px">El&nbsp;reto</div><div class="tl-txt">El contenido existente no conectaba con las motivaciones, dudas o intereses reales de la audiencia, limitando el engagement y la relevancia de la&nbsp;marca.</div></div>
+  <div class="tl-item f" data-s="6" data-a="right" style="top:520px"><div class="h3" style="font-weight:700;font-size:40px">Cómo lo&nbsp;resolvimos</div><div class="tl-txt">Se definieron y desarrollaron narrativas y recursos alineados a pilares de interés del usuario (educativos, de valor y estilo de vida), priorizando resolver sus necesidades antes de&nbsp;vender.</div></div>
+  <div class="tl-item f" data-s="7" data-a="right" style="top:748px"><div class="h3" style="font-weight:700;font-size:40px">Lo que&nbsp;aprendimos</div><div class="tl-txt">El contenido enfocado en las prioridades del usuario construye autoridad de marca, incrementa el tiempo de permanencia y fomenta una relación de confianza a largo&nbsp;plazo.</div></div>
   <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 20 · RESULTADOS -->
+<section class="slide s-surface" data-title="Tu Hogar · Antes y después">
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">07 · Caso Tu&nbsp;Hogar</div>
+  <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px">La evolución del sitio</h2>
+  <div class="abs f" data-s="1" data-a="card" style="left:80px;top:290px;width:555px">
+    <div class="browser"><div class="bar-top"><i style="background:var(--coral)"></i><i style="background:var(--sand)"></i><i style="background:var(--green)"></i><span class="url"></span></div>
+      <div class="shot media"><img class="scroll" src="assets/tuhogar-antes.jpg" alt="Tu Hogar antes" style="--dist:-1972px;--dur:16s"></div></div>
+    <div class="h3" style="margin-top:24px;font-weight:700">Antes</div><div class="small t-ink" style="font-size:24px">El sitio antes del&nbsp;rediseño</div>
+  </div>
+  <div class="abs f" data-s="2" data-a="card" style="left:683px;top:290px;width:555px">
+    <div class="browser"><div class="bar-top"><i style="background:var(--coral)"></i><i style="background:var(--sand)"></i><i style="background:var(--green)"></i><span class="url"></span></div>
+      <div class="shot media"><img class="scroll" src="assets/tuhogar-despues.jpg" alt="Tu Hogar después" style="--dist:-1526px;--dur:14s;animation-delay:2s"></div></div>
+    <div class="h3" style="margin-top:24px;font-weight:700">Después</div><div class="small t-ink" style="font-size:24px">El sitio&nbsp;rediseñado</div>
+  </div>
+  <div class="abs f" data-s="3" data-a="card" style="left:1286px;top:290px;width:555px">
+    <div class="browser"><div class="bar-top"><i style="background:var(--coral)"></i><i style="background:var(--sand)"></i><i style="background:var(--green)"></i><span class="url"></span></div>
+      <div class="shot media"><video src="assets/tuhogar-despues.mp4" poster="assets/tuhogar-despues-poster.jpg" muted loop autoplay playsinline preload="auto"></video></div></div>
+    <div class="h3" style="margin-top:24px;font-weight:700">Después · en&nbsp;vivo</div><div class="small t-ink" style="font-size:24px">Navegación del sitio&nbsp;actual</div>
+  </div>
+  <img class="logo" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
+</section>
+
 <section class="slide s-navy" data-title="Resultados Tu Hogar">
-  <div class="abs kicker t-mint f" data-s="0" data-a="up" style="left:80px;top:72px">05 · Caso Tu Hogar · Resultados</div>
+  <div class="abs kicker t-mint f" data-s="0" data-a="up" style="left:80px;top:72px">07 · Caso Tu Hogar ·&nbsp;Resultados</div>
   <h2 class="abs d-m split f" data-s="0" style="left:80px;top:112px">El resultado</h2>
   <div class="abs f" data-s="2" data-a="blur" style="left:80px;top:300px;width:820px;--d:.5s">
     <div class="num" style="font-size:340px;color:var(--green);line-height:.9">#3</div>
-    <div class="h3" style="margin-top:24px;font-size:52px;line-height:1.12">Sitio más visitado del ecosistema Colgate-Palmolive</div>
-    <div class="small t-sky" style="margin-top:16px">Tuhogar.mx · Q3 2026</div>
+    <div class="h3" style="margin-top:24px;font-size:52px;line-height:1.12">Sitio más visitado del ecosistema&nbsp;<span class="nw">Colgate-Palmolive</span></div>
+    <div class="small t-sky" style="margin-top:16px">Tuhogar.mx · Q3&nbsp;2026</div>
   </div>
-  <div class="abs f" data-s="3" data-a="up" style="left:80px;top:870px"><div class="pill c-mint">Por encima de Colgate.com US</div></div>
+  <div class="abs f" data-s="3" data-a="up" style="left:80px;top:870px"><div class="pill c-mint">Por encima de Colgate.com&nbsp;US</div></div>
   <div class="abs" style="left:1000px;top:300px;width:840px">
     <div class="rank f" data-s="1" data-a="right"><b>01</b>Hill's<span>US</span></div>
     <div class="rank f" data-s="1" data-a="right" style="--d:.15s"><b>02</b>Hill's e-commerce<span>US</span></div>
@@ -782,52 +877,50 @@ svg .f{transform-box:fill-box;transform-origin:center}
   <img class="logo" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 24 · CTA / CIERRE DE CICLO -->
 <section class="slide s-white" data-title="Cierre · Qué te llevas">
-  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">Cierre · Del salón a la industria</div>
+  <div class="abs kicker t-blue f" data-s="0" data-a="up" style="left:80px;top:72px">Cierre · Del salón a la&nbsp;industria</div>
   <h2 class="abs d-s split f" data-s="0" style="left:80px;top:112px">¿Dónde queda el diseñador interactivo?</h2>
   <div class="panel cta c-blue f" data-s="1" data-a="up" style="left:80px">
-    <div class="n">01 · Innovación</div>
+    <div class="n">01 ·&nbsp;Innovación</div>
     <svg style="width:180px;height:180px" viewBox="0 0 220 220" aria-hidden="true">
       <g class="ico-s" style="stroke-width:4;opacity:.7"><path d="M40 60 L110 40 L180 70 L150 150 L70 170 L40 60 M110 40 L110 110 L180 70 M110 110 L70 170 M110 110 L150 150 M40 60 L110 110"/></g>
       <circle class="nd" cx="40" cy="60" r="14"/><circle class="nd" cx="110" cy="40" r="14" style="animation-delay:.3s"/><circle class="nd" cx="180" cy="70" r="14" style="animation-delay:.6s"/>
       <circle class="nd" cx="150" cy="150" r="14" style="animation-delay:.9s"/><circle class="nd" cx="70" cy="170" r="14" style="animation-delay:1.2s"/><circle class="nd" cx="110" cy="110" r="22" style="animation-delay:.15s;fill:var(--mint)"/>
     </svg>
-    <div><div class="cta-h">El criterio es tu activo</div><div class="cta-b">Las herramientas cambian cada semestre; saber formular el problema correcto no se desactualiza.</div></div>
+    <div><div class="cta-h">El criterio es tu&nbsp;activo</div><div class="cta-b">Las herramientas cambian; formular bien el problema,&nbsp;no.</div></div>
   </div>
   <div class="panel cta c-navy f" data-s="2" data-a="up" style="left:683px">
-    <div class="n t-mint">02 · Crecimiento</div>
+    <div class="n t-mint">02 ·&nbsp;Crecimiento</div>
     <svg style="width:180px;height:180px" viewBox="0 0 220 220" aria-hidden="true">
       <g class="rot" style="--dur:8s;transform-origin:88px 120px"><circle cx="88" cy="120" r="50" style="fill:none;stroke:var(--mint);stroke-width:22;stroke-dasharray:12 10.44"/><circle cx="88" cy="120" r="20" class="ico-s" style="stroke:var(--mint)"/></g>
       <g class="rotr" style="--dur:5.3s;transform-origin:160px 62px"><circle cx="160" cy="62" r="30" style="fill:none;stroke:var(--white);stroke-width:16;stroke-dasharray:8 7.7"/><circle cx="160" cy="62" r="10" style="fill:none;stroke:var(--white);stroke-width:5"/></g>
     </svg>
-    <div><div class="cta-h">El diseño sin gestión es solo intención</div><div class="cta-b t-sky">Apropiarte de los tiempos, la comunicación con el cliente y el impacto en el negocio.</div></div>
+    <div><div class="cta-h">El diseño sin gestión es solo&nbsp;intención</div><div class="cta-b t-sky">Tiempos, cliente e impacto en el negocio también son&nbsp;diseño.</div></div>
   </div>
   <div class="panel cta c-mint f" data-s="3" data-a="up" style="left:1286px">
-    <div class="n">03 · Cuidado</div>
+    <div class="n">03 ·&nbsp;Cuidado</div>
     <svg style="width:180px;height:180px" viewBox="0 0 220 220" aria-hidden="true">
       <g class="pulse" style="transform-box:fill-box;transform-origin:center;--t:1.6s"><path d="M110 184 C 44 138, 26 92, 52 64 C 76 40, 104 52, 110 76 C 116 52, 144 40, 168 64 C 194 92, 176 138, 110 184 Z" class="ico-s"/></g>
       <path d="M14 118 H68 L84 92 L100 146 L116 100 L128 118 H206" style="fill:none;stroke:var(--blue);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:14 10;animation:flow 1.4s linear infinite"/>
     </svg>
-    <div><div class="cta-h">Diseña para personas, no para pantallas</div><div class="cta-b">Tu Hogar llegó al #3 del ecosistema Colgate-Palmolive porque primero resolvió lo que el usuario necesitaba, y después vendió.</div></div>
+    <div><div class="cta-h">Diseña para personas, no para&nbsp;pantallas</div><div class="cta-b">Tu Hogar llegó al #3 resolviendo primero lo que el usuario&nbsp;necesitaba.</div></div>
   </div>
   <p class="abs f" data-s="4" data-a="up" style="left:80px;top:850px;width:1760px;font-size:56px;font-weight:700;letter-spacing:-.015em;color:var(--navy);isolation:isolate">Aprender a aprender es tu <span class="hl f" data-s="4" data-a="hl" style="--d:.4s;color:var(--white)">mayor ventaja.</span></p>
   <img class="logo" style="left:auto;right:80px" src="assets/cp-logo-color.png" alt="Colgate-Palmolive">
 </section>
 
-<!-- 25 · PREGUNTAS -->
 <section class="slide s-blue" data-title="Preguntas">
   <div class="abs" style="left:1190px;top:150px;width:600px;height:600px">
     <span class="ripple" style="--rc:var(--white)"></span><span class="ripple" style="--rc:var(--white)"></span><span class="ripple" style="--rc:var(--white)"></span>
   </div>
   <div class="abs num" style="left:1260px;top:20px;font-size:820px;color:var(--white);animation:wobble 5s ease-in-out infinite;transform-origin:50% 70%">?</div>
-  <div class="abs kicker f" data-s="0" data-a="up" style="left:80px;top:240px">06 · Q&amp;A</div>
+  <div class="abs kicker f" data-s="0" data-a="up" style="left:80px;top:240px">Q&amp;A</div>
   <h2 class="abs d-xxl split f" data-s="0" style="left:80px;top:290px;--d:.1s">Preguntas</h2>
-  <div class="abs f" data-s="0" data-a="up" style="left:80px;top:540px;--d:.8s"><div class="pill c-navy"><span class="dot" style="background:var(--mint)"></span>Modera · Jose Bolaños</div></div>
+  <div class="abs f" data-s="0" data-a="up" style="left:80px;top:540px;--d:.8s"><div class="pill c-navy"><span class="dot" style="background:var(--mint)"></span>Modera · Jose&nbsp;Bolaños</div></div>
   <div class="abs f" data-s="1" data-a="up" style="left:80px;top:720px">
     <div class="d-m" style="font-weight:700">¡Gracias!</div>
-    <div class="h3" style="font-weight:500;margin-top:16px">Valentina Chavez · Jose Bolaños</div>
-    <div class="small" style="margin-top:8px">BEX y Content Lab · Colgate-Palmolive</div>
+    <div class="h3" style="font-weight:500;margin-top:16px">Valentina Chavez · Jose&nbsp;Bolaños</div>
+    <div class="small" style="margin-top:8px">BEX y Content Lab ·&nbsp;<span class="nw">Colgate-Palmolive</span></div>
   </div>
   <img class="logo" style="left:auto;right:80px" src="assets/cp-logo-white.png" alt="Colgate-Palmolive">
 </section>
@@ -838,8 +931,8 @@ svg .f{transform-box:fill-box;transform-origin:center}
 <div class="prog" aria-hidden="true"><i id="bar"></i></div>
 <div class="ctrl" id="ctrl">
   <button id="bh" aria-label="Ir al inicio"><svg viewBox="0 0 16 16"><path d="M3 3 V13 M13 3 L7 8 L13 13"/></svg></button>
-  <input id="jump" type="range" min="1" max="25" value="1" step="1" aria-label="Ir a slide">
-  <span id="num">01 / 19</span>
+  <input id="jump" type="range" min="1" max="31" value="1" step="1" aria-label="Ir a slide">
+  <span id="num">01 / 31</span>
   <span class="dots" id="dots"></span>
   <button id="bp" aria-label="Anterior"><svg viewBox="0 0 16 16"><path d="M10 3 L5 8 L10 13"/></svg></button>
   <button id="bn" aria-label="Siguiente"><svg viewBox="0 0 16 16"><path d="M6 3 L11 8 L6 13"/></svg></button>
@@ -914,9 +1007,10 @@ svg .f{transform-box:fill-box;transform-origin:center}
     const done=slides.slice(0,cur).reduce((a,s)=>a+s._max+1,0)+step+1;
     document.getElementById('bar').style.width=(done/total*100)+'%';
   }
-  const reelV=document.getElementById('reel');
-  function syncReel(){if(!reelV)return;const on=slides[cur].contains(reelV);if(on){reelV.currentTime=0;const p=reelV.play();if(p&&p.catch)p.catch(()=>{})}else{reelV.pause()}}
-  if(reelV)reelV.addEventListener('click',e=>{e.stopPropagation();reelV.paused?reelV.play():reelV.pause()});
+  // videos with [data-slide-play]: start from 0 (with sound) when their slide opens, pause when it closes; click toggles
+  const sVids=[...stage.querySelectorAll('video[data-slide-play]')];
+  function syncReel(){sVids.forEach(v=>{if(slides[cur].contains(v)){v.currentTime=0;const p=v.play();if(p&&p.catch)p.catch(()=>{})}else v.pause()})}
+  sVids.forEach(v=>v.addEventListener('click',e=>{e.stopPropagation();v.paused?v.play():v.pause()}));
   function show(n,st){
     slides[n].classList.add('active');
     cur=n;step=st;

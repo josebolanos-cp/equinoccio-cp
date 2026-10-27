@@ -1,39 +1,58 @@
-Aprender a aprender, el DMI en la industria
-Valentina Chavez · Jose Bolaños · Colgate-Palmolive
+Aprender a aprender
+Colgate-Palmolive · Content Lab
 
 CÓMO ABRIRLA
-1. Descomprime la carpeta completa (index.html y la carpeta assets deben quedar juntas).
-2. Abre index.html con Chrome o Edge (doble clic).
+1. Mantén juntos index.html y la carpeta assets.
+2. Abre index.html con Chrome o Edge.
 3. Presiona F para pantalla completa.
 
 CONTROLES
 - Avanzar: clic, espacio, flecha derecha o Page Down (clicker)
 - Volver: flecha izquierda, Page Up o clic derecho
-- Inicio / Final: Home / End, o el botón de inicio del menú
-- Saltar a un slide: el slider del menú (abajo a la derecha)
-- Slides con animación larga (p. ej. Nuestro propósito): un clic durante la
-  animación la completa al instante; el siguiente clic avanza.
-- Reel (slide Nuestro reel): arranca solo al entrar al slide, con sonido.
-  Clic sobre el video = pausa/reanuda. Al salir del slide se detiene.
+- Inicio / Final: Home / End · Saltar a un slide: slider del menú (abajo a la derecha)
+- Animaciones largas: un clic durante la animación la completa; el siguiente avanza.
+- Videos: arrancan al entrar a su slide; clic sobre el video = pausa/reanuda.
 
 TIPOGRAFÍA
-La fuente DM Sans se carga desde Google Fonts, así que necesitas internet.
-Sin conexión, la presentación funciona igual pero con Arial.
-Si vas a presentar sin internet, instala DM Sans en el computador
-(fonts.google.com/specimen/DM+Sans); la presentación la usa automáticamente.
+DM Sans se carga desde Google Fonts (requiere internet). Sin conexión se usa Arial,
+salvo que DM Sans esté instalada en el equipo.
 
 ARCHIVOS
-index.html                     La presentación completa (estilos, animaciones y código)
-assets/cp-logo-white.png       Logo para fondos oscuros
-assets/cp-logo-color.png       Logo para fondos claros
-assets/foto-valentina.jpg      Foto de Valentina
-assets/foto-jose.jpg           Foto de Jose
-assets/reel-content-lab.mp4    Reel del Content Lab
-assets/reel-poster.jpg         Primer cuadro del reel
-assets/bex-01.mp4              Captura animada Tu Hogar (tarjeta Experiencias digitales de marca)
-assets/bex-01-poster.jpg       Primer cuadro de bex-01
-assets/bex-02.jpg, bex-03.jpg  Capturas con scroll simulado (Web admin / E-commerce)
-assets/lab-01.jpg … lab-09.jpg Piezas 1:1 del Lab para el carrusel (optimizadas a 360px)
-
-PENDIENTES
-- Ninguno
+index.html                           Presentación completa (31 slides)
+assets/bex-01-poster.jpg                  118 KB
+assets/bex-01.mp4                         518 KB
+assets/bex-02.jpg                         96 KB
+assets/bex-03.jpg                         97 KB
+assets/cp-logo-color.png                  24 KB
+assets/cp-logo-white.png                  23 KB
+assets/foto-bex-equipo.jpg                302 KB
+assets/foto-jose.jpg                      43 KB
+assets/foto-lab-equipo.jpg                166 KB
+assets/foto-valentina.jpg                 46 KB
+assets/ia-real.jpg                        288 KB
+assets/ia-sin-criterio.jpg                289 KB
+assets/lab-01.jpg                         26 KB
+assets/lab-02.jpg                         30 KB
+assets/lab-03.jpg                         21 KB
+assets/lab-04.jpg                         27 KB
+assets/lab-05.jpg                         37 KB
+assets/lab-06.jpg                         19 KB
+assets/lab-07.jpg                         19 KB
+assets/lab-08.jpg                         23 KB
+assets/lab-09.jpg                         22 KB
+assets/logo-ajax.png                      15 KB
+assets/logo-axion.png                     36 KB
+assets/logo-colgate.png                   15 KB
+assets/logo-fabuloso.png                  31 KB
+assets/logo-hills.png                     16 KB
+assets/logo-lady-speed-stick.png          24 KB
+assets/logo-palmolive.png                 14 KB
+assets/logo-protex.png                    18 KB
+assets/logo-speed-stick.png               27 KB
+assets/logo-suavitel.png                  24 KB
+assets/reel-content-lab.mp4               18 MB
+assets/reel-poster.jpg                    57 KB
+assets/tuhogar-antes.jpg                  261 KB
+assets/tuhogar-despues-poster.jpg         88 KB
+assets/tuhogar-despues.jpg                184 KB
+assets/tuhogar-despues.mp4                919 KB
