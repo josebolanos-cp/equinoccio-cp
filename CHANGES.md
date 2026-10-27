@@ -1,8 +1,8 @@
-# v21
+# v22
 
-Base: equinoccio-cp-v20 (se conserva como respaldo).
+Base: equinoccio-cp-v21 (se conserva como respaldo).
 
-- 12 Las personas detrás del Lab: "ofrece soluciones audiovisuales" → "ofrece soluciones de diseño".
+- 05 Nuestro propósito: la coma después de "cuidado" y de "crecimiento" queda pegada a la palabra subrayada; ya no salta sola al inicio de la línea.
 
 ## Subir a GitHub
 index.html, CHANGES.md (los assets no cambian).
